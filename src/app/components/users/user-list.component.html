@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Sucursale</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Cod suc.</th>
+            <th>Denumire</th>
+            <th>Adresa</th>
+            <th>Oras</th>
+            <th>Judet</th>
+            <th>Cod agent moneygram</th>
+            <th>Parola agent moneygram</th>
+            <th>POS agent MoneyGram</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sucursala of sucursale | async">
+            <td>{{sucursala.id}}</td>
+            <td>{{sucursala.cod}}</td>
+            <td>{{sucursala.denumire}}</td>
+            <td>{{sucursala.adresa}}</td>
+            <td>{{sucursala.oras}}</td>
+            <td>{{sucursala.judet}}</td>
+            <td>{{sucursala.codAgentMoneyGram}}</td>
+            <td>{{sucursala.parolaAgentMoneyGram}}</td>
+            <td>{{sucursala.posAgentMoneyGram}}</td>
+            <td>{{sucursala.status}}</td>
+            <td>
+                <!--<button (click)="deleteSucursala(sucursala.id)" class="btn btn-danger">Delete</button>-->
+                <button (click)="sucursalaDetails(sucursala.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

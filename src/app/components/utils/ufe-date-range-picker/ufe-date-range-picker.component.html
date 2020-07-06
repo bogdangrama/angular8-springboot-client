@@ -1,0 +1,46 @@
+<div class="ufe-date-range-picker form-group" [formGroup]="dateRangePickerFormGroup">
+  <div class="input-group">
+    <input type="text" class="timeline-date-interval form-control form-control-md" formControlName="fromDateToDate"/>
+    <input
+      name="datepicker"
+      class="form-control hidden"
+      ngbDatepicker
+      #datepicker="ngbDatepicker"
+      [autoClose]="'outside'"
+      [showWeekdays]="false"
+      (dateSelect)="onDateSelection($event)"
+      [displayMonths]="range"
+      [dayTemplate]="t"
+      outsideDays="hidden"
+      [startDate]="from"
+      [positionTarget]="btnCalendar"
+      [footerTemplate]="footerTemplate"
+    >
+    <ng-template #footerTemplate>
+      <hr class="my-0">
+      <div class="footer">
+        <button class="btn btn-outline-primary btn-sm" (click)="setMonths(3)">3</button>
+        <button class="btn btn-outline-primary btn-sm" (click)="setMonths(2)">2</button>
+        <button class="btn btn-outline-primary btn-sm" (click)="setMonths(1)">1</button>
+      </div>
+    </ng-template>
+
+    <ng-template #t let-date let-focused="focused">
+      <span
+        class="day"
+        [class.focused]="focused"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null"
+      >
+        {{ date.day }}
+      </span>
+    </ng-template>
+    <div class="input-group-append">
+      <button #btnCalendar class="btn btn-calendar" (click)="datepicker.toggle()" type="button">
+        <i class="far fa-calendar text-muted"></i>
+      </button>
+    </div>
+  </div>
+</div>

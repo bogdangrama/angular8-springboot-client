@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UFE-Cards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Scanare-Card---State-4---Error" transform="translate(-541.000000, -230.000000)" fill="#F16969" fill-rule="nonzero">
+            <g id="Content">
+                <g id="Scanning-Card" transform="translate(269.000000, 100.000000)">
+                    <g id="Notification" transform="translate(241.000000, 115.000000)">
+                        <g id="Icon" transform="translate(31.000000, 15.000000)">
+                            <path d="M10,0 C4.4775,0 0,4.4775 0,10 C0,15.5225 4.4775,20 10,20 C15.5225,20 20,15.5225 20,10 C20,4.4775 15.5225,0 10,0 Z M10,15 C9.40632911,15 9,14.5644578 9,14 C9,13.4192771 9.42341772,13 10,13 C10.6094937,13 11,13.4192771 11,14 C11,14.5650602 10.6094937,15 10,15 Z M10.3153431,10.62623 C10.1924955,11.1203371 9.80544847,11.1288248 9.67643279,10.62623 C9.52788486,10.0466393 9,7.84649856 9,6.41752867 C9,4.53204018 11,4.52294618 11,6.41752867 C10.999486,7.85498629 10.4433308,10.1121161 10.3153431,10.62623 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

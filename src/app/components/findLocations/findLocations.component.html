@@ -1,0 +1,159 @@
+<div class="TopRectangle">
+  <div class="TopRectangleText SecondStyle">
+    <div class="row">
+      <div class="col-lg-6 text-left">
+        Status tranzactii
+      </div>
+      <div class="col-lg-6 text-right">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="MiddleRectangle">
+
+
+
+  <div class="row">
+
+
+    <div class="col-lg-12">
+
+<div class="content-wrapper">
+  <section class="content">
+    <br />
+    <div class="table-container" style="background-color: white">
+
+      <div class="row" style="padding: 20px 20px 20px 20px;">
+        <div class="col-lg-2">
+          <div class="form-group">
+            <input type="text" class="form-control" id="perioada" placeholder="Perioada" required name="perioada">
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="form-group">
+            <input type="text" class="form-control" id="sucursala" placeholder="Sucursala" required name="sucursala">
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="form-group">
+            <input type="number" class="form-control" id="valoaretranzactie" placeholder="Valoarea tranzactiei" required name="valoaretranzactie">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <button type="submit" class="ButonTranzactii">Cautare</button>
+          &nbsp;
+          <button type="submit" class="ButonTranzactii">Descarca raport</button>
+        </div>
+      </div>
+
+      <div class="table-body">
+        <div class="headers">
+          <div class="header" [ngClass]="determineReportHeaderClass(header)" [ngStyle]="determineColumnWidth()"
+               *ngFor="let header of reportView.activeColumnHeaders; let i = index"
+               (keyup.escape)="cancelFilterPopup()">
+            <div class="header-name">{{header.fieldValue | uppercase}}</div>
+            <div class="header-sorting-placeholder">
+              <div class="header-sorting" *ngIf="header.sorting !== reportView.sorting.NONE">
+                <img *ngIf="header.sorting === reportView.sorting.ASC"
+                     src="../../../assets/images/svg/reporting/sort_arrow_up_header.svg">
+                <img *ngIf="header.sorting === reportView.sorting.DESC"
+                     src="../../../assets/images/svg/reporting/sort_arrow_down_header.svg">
+              </div>
+            </div>
+            <div class="header-search-placeholder">
+              <div class="header-search" *ngIf="header.filter">
+                <img class="search-icon" src="../../../assets/images/svg/reporting/search.svg">
+                <div class="search-value" *ngIf="header.filter.length < 5">"{{header.filter}}"</div>
+                <div class="search-value" *ngIf="header.filter.length > 4">"{{header.filter.substring(0, 4)}}..."
+                </div>
+              </div>
+            </div>
+            <div class="header-menu">
+              <div class="additional-menu" (click)="showFilterPopup(header)">
+                <img *ngIf="header.isFilterPopupVisible == false" src="../../../assets/images/svg/reporting/additional_menu.svg">
+                <img *ngIf="header.isFilterPopupVisible == true"
+                     src="../../../assets/images/svg/reporting/additional_menu_active.svg">
+              </div>
+              <div class="filter-popup" *ngIf="header.isFilterPopupVisible" [ngStyle]="determinePopupPosition(i)"
+                   (keyup.enter)="applyFilterPopup(header, false,false, filterValue.value)">
+                <div class="filter-sort" (click)="applyFilterPopup(header,true, false, null)"><img
+                  src="../../../assets/images/svg/reporting/sort_arrow_up_popup.svg">Sortare ascendenta
+                </div>
+                <div class="filter-sort" (click)="applyFilterPopup(header,false, true, null)"><img
+                  src="../../../assets/images/svg/reporting/sort_arrow_down_popup.svg">Sortare descendenta
+                </div>
+                <input class="filter-search" #filterValue placeholder="Cauta dupa {{header.fieldValue}}"
+                       [value]="header.filter"/>
+                <div *ngIf="!header.isFilterPopupColumnSelectionVisible" class="filter-popup-columns-selection"
+                     (click)="header.isFilterPopupColumnSelectionVisible = !header.isFilterPopupColumnSelectionVisible">
+                  <img src="../../../assets/images/svg/reporting/popup_more_columns_inactive.svg">Configurare coloane
+                </div>
+                <div *ngIf="header.isFilterPopupColumnSelectionVisible" class="filter-popup-columns-selection active"
+                     (click)="header.isFilterPopupColumnSelectionVisible = !header.isFilterPopupColumnSelectionVisible">
+                  <img src="../../../assets/images/svg/reporting/popup_more_columns_active.svg">Configurare coloane
+                </div>
+                <div *ngIf="header.isFilterPopupColumnSelectionVisible" class="filter-popup-columns-header"></div>
+                <div *ngIf="header.isFilterPopupColumnSelectionVisible" class="filter-popup-columns">
+                  <div *ngFor="let filterColumn of reportView.columnHeaders" class="checkbox-line">
+                    <input type="checkbox" [checked]="filterColumn.isActive"
+                           (change)="filterColumn.isTemp = !filterColumn.isTemp"
+                           [disabled]="" class="checkbox">
+                    <div class="checkbox-text">{{filterColumn.fieldValue}}</div>
+                  </div>
+                </div>
+                <div *ngIf="header.isFilterPopupColumnSelectionVisible" class="filter-popup-columns-footer"></div>
+                <div *ngIf="header.isFilterPopupColumnSelectionVisible" class="filter-popup-actions">
+                  <button type="button" (click)="cancelFilterPopup()" class="btn btn-secondary">Anuleaza</button>
+                  <button type="button" (click)="applyFilterPopup(header,false, false, filterValue.value)"
+                          class="btn btn-primary">Aplica
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-row" *ngFor="let line of reportView.reportContent; let i = index" style="background-color: white;"
+             [ngClass]="determineFirstRow(i)">
+          <div class="table-column" [ngStyle]="determineColumnWidth()"
+               *ngFor="let column of line">
+              <img *ngIf="column.fieldValue == 'Send'" src="../../../assets/images/sendGreenDot.png" width="10px" />
+              <img *ngIf="column.fieldValue == 'Receive'" src="../../../assets/images/receiveBlueDot.png" width="10px" />
+              {{column.fieldValue ? column.fieldValue : emptyCol}}
+          </div>
+        </div>
+      </div>
+      <div class="table-footer">
+        <div class="paging" *ngIf="reportView.reportContent.length > 1">
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 1"
+                  (click)="previousPages(1)">{{ 'reporting.previous_page' }}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 3"
+                  (click)="previousPages(3)">{{currentPage - 3}}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 2"
+                  (click)="previousPages(2)">{{currentPage - 2}}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 1"
+                  (click)="previousPages(1)">{{currentPage - 1}}</button>
+          <button type="button" class="btn btn-primary">{{currentPage}}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage < totalResults/batchSize"
+                  (click)="nextPages(1)">{{currentPage + 1}}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage < (totalResults - batchSize)/batchSize"
+                  (click)="nextPages(2)">{{currentPage + 2}}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage < (totalResults - batchSize*2)/batchSize"
+                  (click)="nextPages(3)">{{currentPage + 3}}</button>
+          <button type="button" class="btn btn-secondary" *ngIf="currentPage < totalResults/batchSize"
+                  (click)="nextPages(1)">{{ 'reporting.next_page' }}</button>
+        </div>
+        <div class="total-results">
+          {{totalResultsFooterText}}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+    </div>
+
+  </div>
+
+</div>

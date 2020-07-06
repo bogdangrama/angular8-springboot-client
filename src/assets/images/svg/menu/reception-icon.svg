@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>🎨Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M2,2 L2,12 L18,12 L18,2 L2,2 Z M18,0 C19.1045695,0 20,0.8954305 20,2 L20,12 C20,13.1045695 19.1045695,14 18,14 L2,14 C0.8954305,14 0,13.1045695 0,12 L0,2 C0,0.8954305 0.8954305,0 2,0 L18,0 Z M18,4 L2,4 L2,7 L18,7 L18,4 Z" id="path-1"></path>
+    </defs>
+    <g id="UFE-Cards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard" transform="translate(-30.000000, -303.000000)">
+            <g id="Sidebar-Menu">
+                <g id="Links" transform="translate(0.000000, 216.000000)">
+                    <g id="2" transform="translate(30.000000, 87.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="🎨Icon" fill="#BCCFFC" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

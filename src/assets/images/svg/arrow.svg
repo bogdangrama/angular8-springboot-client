@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="89px" height="106px" viewBox="0 0 89 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UFE-Cards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Scanare-Card---State-2" transform="translate(-1359.000000, -546.000000)" stroke="#D5D5D5" stroke-width="2">
+            <g id="Content">
+                <g id="Sidebar" transform="translate(1261.000000, 100.000000)">
+                    <g id="Arrow" transform="translate(142.781449, 499.548224) scale(-1, 1) rotate(-221.000000) translate(-142.781449, -499.548224) translate(125.781449, 431.048224)">
+                        <path d="M14.417097,136.466396 C39.9611388,91.0486732 40.1347567,48.2437664 14.9379508,8.0516752" id="Path-3"></path>
+                        <polyline id="Path-4" transform="translate(16.925728, 14.670325) rotate(-30.000000) translate(-16.925728, -14.670325) " points="31.1188091 22.8293448 18.407325 6.51130506 2.73264736 22.8293448"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

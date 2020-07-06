@@ -1,0 +1,765 @@
+<div class="row">
+  <div class="col-lg-9">
+    <div class="DivPaginaComisionare">
+
+      <div *ngIf="AfiseazaPas1">
+
+        <div class="modal fade" #marketingModal id="marketingModal" tabindex="-1" role="dialog" aria-labelledby="marketingModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content"  style="width: 600px; margin-top: 250px;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="marketingModalLabel">Acord de marketing pentru <b>Covaci Simona Adriana</b></h5>
+              </div>
+              <div class="modal-body">
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-12">
+                    7.2. Completand si semnand prezentul formular, sunteti de acord ca Datele dvs. Personale sa fie prelucrate si de catre Agentul nostru, Banca Comerciala Romana (BCR), in calitatea sa de operator, in scopul participarii si desemnarii castigatorilor in cadrul campaniilor de promovare derulate de catre BCR, realizarii de rapoarte statistice cu privire la clienţii, produsele şi serviciile BCR, informarii cu privire la alte acţiuni/campanii desfăşurate în viitor, in scopul participarii la campaniile promotionale sau de marketing organizate de MoneyGram si/sau Banca Comerciala Romana, inclusiv campaniile cu tragere la sorti si in scopul transmiterii de catre BCR DE informatii despre campanii, activitati/actiuni viitoare de marketing.
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Nu este de acord</button>
+                <button type="button" class="btn btn-primary">Este de acord</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="DivInfoPasSend">
+          <div class="row">
+            <div class="col-lg-3" style="text-align: center;">
+              1 Info Transfer
+            </div>
+            <div class="col-lg-3" style="text-align: center;">
+              2 Oferta
+            </div>
+            <div class="col-lg-3" style="text-align: center;">
+              3 Detalii destinatar
+            </div>
+            <div class="col-lg-3" style="text-align: center;">
+              4 Tiparire document
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-top: 20px; padding-bottom: 20px;">
+          <h2>Analiza comision</h2>
+          <label class="FeeLookupInfoLabel">Pentru a putea calcula taxele, te rog sa introduci datele transferului mai jos:</label>
+        </div>
+
+        <div class="DivComisionare">
+        <div>
+          <div>
+            <div>
+              <div class="form-group">
+                <label for="receiveCountry" class="FeeLookupLabel">Tara primire</label>
+                <select id="receiveCountry"
+                        name="receiveCountry"
+                        [(ngModel)]="feeLookup.receiveCountry"
+                        class="form-control"
+                        (change)="selectCountry()">
+
+                          <option *ngFor="let country of countryInfoList"
+                            value="{{country.CountryCode}}"
+                            [selected]="country.CountryCode == this.feeLookup.receiveCountry">{{country.CountryName}}
+                          </option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="form-group">
+                <label class="FeeLookupLabel">Valuta depusa</label> <br />
+                <!--<input type="radio" id="currencyToateOptiunile" name="currencyToateOptiunile" value="" [(ngModel)]="feeLookup.currency">
+                <label for="currencyToateOptiunile">&nbsp;Toate optiunile</label><br>-->
+                <input type="radio" id="currencyRon" name="currencyRon" value="RON" [(ngModel)]="feeLookup.currency">
+                <label for="currencyRon">&nbsp;RON</label><br>
+                <input type="radio" id="currencyEur" name="currencyEur" value="EUR" [(ngModel)]="feeLookup.currency">
+                <label for="currencyEur">&nbsp;EUR</label><br>
+                <input type="radio" id="currencyUsd" name="currencyUsd" value="USD" [(ngModel)]="feeLookup.currency">
+                <label for="currencyUsd">&nbsp;USD</label>
+              </div>
+            </div>
+            <div>
+              <div class="form-group">
+                <label class="FeeLookupLabel">Tip comisionare</label> <br />
+                <input type="radio" id="tipComisionare0" name="tipComisionare0" value="0" [(ngModel)]="feeLookup.amountType">
+                <label for="tipComisionare0">&nbsp;Incluzand comisioanele</label><br>
+                <input type="radio" id="tipComisionare1" name="tipComisionare1" value="1" [(ngModel)]="feeLookup.amountType">
+                <label for="tipComisionare1">&nbsp;Excluzand comisioanele</label><br>
+                <!--<input type="radio" id="tipComisionare2" name="tipComisionare2" value="2" [(ngModel)]="feeLookup.amountType">
+                <label for="tipComisionare2">&nbsp;Suma primita</label>-->
+              </div>
+            </div>
+            <div>
+              <div class="form-group">
+                <label for="amount" class="FeeLookupLabel">Suma</label>
+                <input type="number" class="form-control" id="amount" [(ngModel)]="feeLookup.amount" required name="amount">
+              </div>
+            </div>
+          </div>
+        </div>
+
+          &nbsp;
+          <hr />
+          <div>
+
+            <div class="modal fade" #promotionCodeModal id="promotionCodeModal" tabindex="-1" role="dialog" aria-labelledby="promotionCodeModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content"  style="width: 600px; margin-top: 250px;">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="promotionCodeModalLabel">Cod promotie</h5>
+                  </div>
+                  <div class="modal-body" style="padding: 0;">
+                    <img src="../../../assets/images/promotionCodeModalImage.png" style="width: 100%;">
+                    <div class="row" style="margin: 20px 20px 20px 20px;">
+                      <div class="col-lg-12">
+                        <input type="text" class="form-control" id="codPromotieInput" [(ngModel)]="codPromotie" required name="codPromotieInput">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Inchide</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="AdaugaCodPromotie()">Aplica codul</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+                <a  *ngIf="feeLookup.promoCode == null" class="LabelCodPromotie" data-toggle="modal" data-target="#promotionCodeModal">+ Ai un cod de promotie?</a>
+
+                <label *ngIf="feeLookup.promoCode">Cod promotie: {{feeLookup.promoCode}}</label> &nbsp;&nbsp;&nbsp;
+                <img *ngIf="feeLookup.promoCode" src="../../../assets/images/deleteButtonImage.png" (click)="DeleteCodPromotie()">
+            </div>
+
+            <hr />
+
+            <div style="text-align: right;">
+              <button type="submit" class="ButonPasulUrmator" (click)="TreceLaPasul2()">Pasul urmator</button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <br /><br /><br /><br /><br /><br />
+
+      </div>
+
+      <div *ngIf="AfiseazaPas2">
+
+        <div class="DivInfoPasFeeSelection">
+          <div class="row">
+            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
+              1 Info Transfer
+            </div>
+            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
+              2 Oferta
+            </div>
+            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
+              3 Detalii destinatar
+            </div>
+            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
+              4 Tiparire document
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-top: 20px; padding-bottom: 20px;">
+          <h2>Oferte transfer</h2>
+          <label class="FeeLookupInfoLabel">Pentru a trece mai departe, te rog selecteaza una din ofertele de mai jos apasand pe sageata albastra:</label>
+        </div>
+
+        <div style="height: 900px;">
+          <table id="datatableFees" class="table table-hover" style="background-color: white; border-radius: 8px;">
+            <thead>
+              <th style="text-align: center;">COMISION</th>
+              <th style="text-align: center;">TRIMIS</th>
+              <th style="text-align: center;">PRIMIT</th>
+              <th style="text-align: center;">MONEDA</th>
+              <th style="text-align: center;">SERVICIU</th>
+              <th style="text-align: center;">NUME AGENT</th>
+              <th></th>
+              <th></th>
+            </thead>
+            <tr *ngFor="let feeInfo of feeInfoList">
+              <td style="text-align: right;">
+                {{feeInfo.sendAmounts.totalSendFees | number: '.2'}}
+              </td>
+              <td style="text-align: right;">
+                {{feeInfo.sendAmounts.sendAmount | number: '.2'}}
+              </td>
+              <td style="text-align: right;">
+                {{feeInfo.receiveAmounts.receiveAmount | number: '.2'}}
+              </td>
+              <td  style="text-align: center;">
+                {{feeInfo.sendAmounts.sendCurrency}} - {{feeInfo.receiveAmounts.payoutCurrency}}
+              </td>
+              <td>
+                {{feeInfo.deliveryOptDisplayName}}
+              </td>
+              <td>
+                {{feeInfo.receiveAgentAbbreviation}} - {{feeInfo.receiveAgentName}}
+              </td>
+              <td>
+                <a data-toggle="modal" data-target="#exampleModal" (click)="ShowFeeDetails(feeInfo)">
+                  <img src="../../../assets/images/TransactionDetailsButton.png">
+                </a>
+              </td>
+              <td>
+                <a (click)="GetFieldForProduct(feeInfo)">
+                  <img src="../../../assets/images/GoToValidationButton.png">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Modal -->
+        <div *ngIf="selectedFeeInfo" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content"  style="width: 600px; margin-top: 250px;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Comision:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.sendAmounts.totalSendFees | number: '.2'}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Comision discount:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.sendAmounts.totalDiscountAmount | number: '.2'}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Comision trimis:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveAmounts.totalReceiveFees | number: '.2'}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Total suma trimisa:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.sendAmounts.totalAmountToCollect | number: '.2'}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Suma primire:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveAmounts.receiveAmount | number: '.2'}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Total suma primire:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveAmounts.totalReceiveAmount | number: '.2'}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Tip moneda trimisa:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.sendAmounts.sendCurrency}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Tip moneda retragere:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveAmounts.receiveCurrency}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Rata de schimb:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.validExchangeRate}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Tara de primire:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveCountry}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Tip serviciu:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.deliveryOptDisplayName}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Abreviere agent primire:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveAgentAbbreviation}}
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-lg-6" style="padding-left: 50px;">
+                    Nume agent primire:
+                  </div>
+                  <div class="col-lg-6" style="font-weight: bold;">
+                    {{selectedFeeInfo.receiveAgentName}}
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Inchide</button>
+                <button type="button" class="btn btn-primary">Selecteaza oferta</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="AfiseazaPas3">
+
+        <div class="DivInfoPasFeeSelection">
+          <div class="row">
+            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
+              1 Info Transfer
+            </div>
+            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
+              2 Oferta
+            </div>
+            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
+              3 Detalii destinatar
+            </div>
+            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
+              4 Tiparire document
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-top: 20px; padding-bottom: 20px;">
+          <h2>Detalii destinatar</h2>
+          <label class="FeeLookupInfoLabel">Completeaza formularul de mai jos cu detaliile celui care primeste suma de bani:</label>
+        </div>
+
+        <div class="DivGFFP">
+          <div *ngFor="let productFieldInfo of sortProductFieldInfoListBy('displayOrder')">
+            <div>
+              <div class="form-group">
+                <label [attr.for]="'input' + productFieldInfo.xmlTag" class="FeeLookupLabel" style="width: 500px;">{{productFieldInfo.fieldLabel}}</label>
+
+                <input *ngIf="productFieldInfo.enumerated == false" [(ngModel)]="productFieldInfo.value" class="form-control" [attr.id]="'input' + productFieldInfo.xmlTag" [attr.name]="'input' + productFieldInfo.xmlTag">
+
+                <select *ngIf="productFieldInfo.enumerated"
+                        [attr.id]="'select' + productFieldInfo.xmlTag"
+                        [attr.name]="'select' + productFieldInfo.xmlTag"
+                        [(ngModel)]="productFieldInfo.value"
+                        class="form-control">
+
+                  <option *ngFor="let info of productFieldInfo.enumeratedValues"
+                          value="{{info.value}}">{{info.label}}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+
+          <hr />
+          <div>
+
+          <div *ngIf="sendValidationWrapper">
+            <div *ngIf="sendValidationWrapper.result !== 'OK'">
+              <div *ngFor="let error of sendValidationWrapper.errors">
+                [{{error.offendingField}}] - [{{error.errorCode}}] - {{error.errorString}}
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: right;">
+            <button type="submit" class="ButonPasulUrmator" (click)="FinalizeazaTransferul()">Finalizeaza transferul</button>
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div *ngIf="AfiseazaPas4">
+
+        <div class="DivInfoPasFeeSelection">
+          <div class="row">
+            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
+              1 Info Transfer
+            </div>
+            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
+              2 Oferta
+            </div>
+            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
+              3 Detalii destinatar
+            </div>
+            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
+              4 Tiparire document
+            </div>
+          </div>
+        </div>
+
+        <br /> <br />
+
+        <div class="DivGFFP">
+
+          <div class="row">
+
+            <div style="width: 100%; text-align: center;">
+
+              <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                  <img src="../../../assets/images/IncasasreBaniSend.png" />
+                </div>
+              </div>
+
+              <br /><br />
+
+              <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                  <h3>Incaseaza suma in Sibcor pentru a putea tipari documentul</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                  <h5>
+                    Dupa incasarea sumei in <b>Sibcor</b>, reintoarce-te pentru a <br /> finaliza tiparirea documentului.
+                  </h5>
+                </div>
+              </div>
+
+              <br />
+
+              <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                  <a style="width: 133px; height: 20px; font-family: Inter; font-size: 16px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: 0.4px; text-align: center; color: #0073ff;">
+                    Deschide Sibcor
+                  </a>
+                </div>
+              </div>
+
+              <br /><br />
+
+              <div class="row">
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                  <table class="table table-hover" style="width: 100%; background-color: white; border-radius: 8px;">
+                    <tr>
+                      <td style="text-align: left;">
+                        Nume destinatar:
+                      </td>
+                      <td style="text-align: left;">
+                        Covaci Simona Adriana
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left;">
+                        Tara primire:
+                      </td>
+                      <td style="text-align: left;">
+                        {{feeLookup.receiveCountry}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left;">
+                        Tip moneda:
+                      </td>
+                      <td style="text-align: left;">
+                        {{selectedFeeInfo.sendAmounts.sendCurrency}} - {{selectedFeeInfo.receiveAmounts.payoutCurrency}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left;">
+                        Tip comisionare:
+                      </td>
+                      <td style="text-align: left;">
+                        Excluzand taxele
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left;">
+                        Comision:
+                      </td>
+                      <td style="text-align: left;">
+                        {{selectedFeeInfo.sendAmounts.totalSendFees | number: '.2'}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left;">
+                        Serviciu:
+                      </td>
+                      <td style="text-align: left;">
+                        {{selectedFeeInfo.deliveryOptDisplayName}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left;">
+                        Agent:
+                      </td>
+                      <td style="text-align: left;">
+                        {{selectedFeeInfo.receiveAgentName}}
+                      </td>
+                    </tr>
+                  </table>
+
+                  <br />
+
+                  <button type="submit" class="ButonPasulUrmator">Tipareste documentul</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-lg-3" style="box-shadow: -1px 0 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
+
+      <div style="background-color: white; height: 1050px; padding: 20px 20px 20px 20px;">
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-12">
+            <label>Covaci Simona Adriana</label> <br />
+            <label>CIC: </label> <label>7676705</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" style="box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
+            &nbsp;
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-12">
+            <label style="font-weight: 600">Detalii client</label>
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            CNP/CUI:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            2910405203405
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Numar telefon:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            0727727727
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Titlu:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Doamna
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Data nasterii:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            07 - 12 -1989
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Localitate:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Bucuresti
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Tara:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Romania
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Cetatenie:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Romana
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Status rezident:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Rezident
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Profesie:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Economist
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Job:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Economist
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-12" style="box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
+            &nbsp;
+          </div>
+        </div>
+
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-12">
+            <label style="font-weight: 600">Detalii act identitate</label>
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Tip act:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Buletin
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Serie si numar:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            XY 970441
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Data Emiterii:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            20 - 08 -2014
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Data expirarii:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            20 - 08 -2024
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Emis de autoritatea:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            SPCLEP Bucuresti
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Tara:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Romania
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Adresa:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Str. Iosif Niculescu, Nr. 5, Ap. 44
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Oras:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Bucuresti
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Judet:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            Brasov
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-6">
+            Cod postal:
+          </div>
+          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
+            505200
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" style="box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
+            &nbsp;
+          </div>
+        </div>
+        <div class="row" style="padding: 5px 5px 5px 5px;">
+          <div class="col-lg-12">
+            <label style="color: #7f7f7f;">Pentru a face orice tip de modificare, va rugam sa folositi Sibcor v2.</label>
+          </div>
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+      </div>
+
+  </div>
+
+</div>
