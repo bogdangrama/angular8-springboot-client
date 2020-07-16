@@ -1,0 +1,17 @@
+<div class="ufe-form-digits-input">
+  <form class="form-inline" [formGroup]="inputGroups">
+    <div formArrayName="inputControls">
+      <div class="form-group"  #formColumn *ngFor="let inputs of inputControls.controls; let i=index">
+        <input
+          #input 
+          class="form-control input-digit"
+          [maxlength]="i > 0 ? 1 : inputControls.length"
+          type="text"
+          [formControlName]="i"
+          (input)="inputChanged($event, i)"
+          (keyup)="onKeyPressed($event, i)"
+        />
+      </div>
+    </div>
+  </form>
+</div>

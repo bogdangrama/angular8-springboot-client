@@ -4,46 +4,49 @@ import {
 } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {NameValue} from '../../models/NameValue';
-import {TransactionReportModel} from '../../models/TransactionReportModel';
 import {MoneyGramService} from '../../services/moneygram.service';
 import {ColumnHeader} from '../../models/ColumnHeader';
 import {ReportView} from '../../models/ReportView';
+import {CountryInfo} from '../../models/countryInfo';
+import {AgentInfoModel} from '../../models/AgentInfoModel';
 
 @Component({
-  selector: 'app-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss']
+  selector: 'app-findLocations',
+  templateUrl: './findLocations.component.html',
+  styleUrls: ['./findLocations.component.scss']
 })
 
-export class TransactionsComponent implements OnInit {
+export class FindLocationsComponent implements OnInit {
 
   // Filters and Sorting
-  transactionHistory = new TransactionReportModel();
+  transactionHistory = new AgentInfoModel()
+  countryInfoList: CountryInfo[];
+  cityList: string[];
+  selectedCountryInfo: CountryInfo;
+  selectedCity: string;
+  selectedCityPrefix: string;
+  prefixCityList: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z"];
 
   transactionsHistoryName = 'Istoric Tranzactii';
 
   windowWidth: any;
 
   // rapoarte complete
-  reportTransactionReportModelHistory: TransactionReportModel[] = [];
+  reportTransactionReportModelHistory: AgentInfoModel[] = [];
 
   reportView = new ReportView();
 
   typeOfTransactionReportModel: NameValue[] = [
-    new NameValue('mgid',
-      this.transactionHistory.mgid),
-    new NameValue('nrreferinta',
-      this.transactionHistory.nrreferinta),
-    new NameValue('tip',
-      this.transactionHistory.tip),
-    new NameValue('stare',
-      this.transactionHistory.stare),
-    new NameValue('nume',
-      this.transactionHistory.nume),
-    new NameValue('prenume',
-      this.transactionHistory.prenume),
-    new NameValue('cnp',
-      this.transactionHistory.cnp)
+    new NameValue('agentName',
+      this.transactionHistory.agentName),
+    new NameValue('adresa',
+      this.transactionHistory.address),
+    new NameValue('sendReceiveCapability',
+      this.transactionHistory.sendReceiveCapability),
+    new NameValue('telefon',
+      this.transactionHistory.agentPhone),
+    new NameValue('program',
+      this.transactionHistory.storeHours)
     ];
 
   dateColumnFilter = '';
@@ -79,7 +82,7 @@ export class TransactionsComponent implements OnInit {
     this.reportView.reportContent = [];
 
     for (let reportLine of this.reportTransactionReportModelHistory) {
-      let reportLineObject = new TransactionReportModel();
+      let reportLineObject = new AgentInfoModel();
       reportLineObject = Object.assign(reportLineObject, reportLine);
       let columnValues: ColumnHeader[] = [];
       for (let column of this.reportView.activeColumnHeaders) {
@@ -179,29 +182,16 @@ export class TransactionsComponent implements OnInit {
       console.log(index.name + '-----' + index.value);
     }
 
-    this.moneyGramService.getTransactions(/*apiServiceId, this.startDate + this.startTime,
-      this.endDate + this.endTime,
-      this.dateColumnFilter,
-      this.reportView.currentSorting.getName(),
-      this.reportView.currentSorting.getValue(),
-      this.currentPage, this.batchSize, this.reportView.currentFilters*/
-      )
+    this.moneyGramService.directoryOfAgentsByCity(this.selectedCountryInfo.CountryCode, this.selectedCity, "undefined")
       .subscribe(
         (data: any) => {
-          /*
-          if (data.response.payload.data.data.executionResult.message === 'Data not found') {
-            this.dataFound = false;
-          } else {
-          */
-
             this.dataFound = true
             const resultsReconverted = JSON.parse(JSON.stringify(data));
             this.reportTransactionReportModelHistory = resultsReconverted;
-            this.totalPages =  1;//Number(data.response.payload.data.data.totalPages);
-            this.totalResults = 5;//Number(data.response.payload.data.data.totalResults);
+            this.totalPages =  10;//Number(data.response.payload.data.data.totalPages);
+            this.totalResults = 10//Number(data.response.payload.data.data.totalResults);
             console.log('total pages: ' + this.totalPages + ';total results: ' + this.totalResults)
             this.buildReportView();
-          //}
         },
         (error: any) => {
           this.dataFound = false;
@@ -286,13 +276,13 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      let report = params['report'];
-      let filter = params['filter'];
-
-      this.clearAndNewCall(this.transactionsHistoryName);
-    });
-    this.windowWidth = window.innerWidth;
+    this.moneyGramService.getCountryInfoList()
+      .subscribe(results => {
+          const resultsReconverted = JSON.parse(JSON.stringify(results));
+          this.countryInfoList = resultsReconverted;
+        },
+        error => {
+        });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -300,4 +290,23 @@ export class TransactionsComponent implements OnInit {
     this.windowWidth = window.innerWidth;
   }
 
+  updateCityListChange() {
+    if (this.selectedCountryInfo != null) {
+      this.moneyGramService.cityList(this.selectedCountryInfo.CountryCode, "undefined", this.selectedCityPrefix)
+        .subscribe(results => {
+            const resultsReconverted = JSON.parse(JSON.stringify(results));
+            this.cityList = resultsReconverted;
+          },
+          error => {
+          });
+    }
+  }
+
+  CautaLocatii() {
+    console.log('Cautam locatii');
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.clearAndNewCall(this.transactionsHistoryName);
+    });
+    this.windowWidth = window.innerWidth;
+  }
 }

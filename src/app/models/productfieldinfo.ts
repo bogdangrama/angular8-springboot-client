@@ -1,26 +1,41 @@
-export class FeeInfo {
-  amount: number;
-  totalDiscountAmount: number;
-  totalSendFees: number;
-  totalSendTaxes: number;
-  areThereAnySendTaxes: boolean = false;
-  sendAmount: number;
-  totalAmount: number;
-  sendCurrency: string;
-  totalReceiveFees: number;
-  areThereAnyReceiveFees: boolean = false;
-  totalReceiveTaxes: number;
-  areThereAnyReceiveTaxes: boolean = false;
-  receiveAmount: number;
-  totalReceiveAmount: number;
-  payoutCurrency: string;
-  validCurrencyIndicator: boolean = true;
-  validExchangeRate: number;
-  estimatedExchangeRate: number;
-  receiveCountry: string;
-  deliveryOptDisplayName: string;
-  receiveAgentAbbreviation: string;
-  receiveAgentName: string;
-  promotionCodeInformation: boolean = false;
-  promotionInformation: string;
+export class ProductFieldInfo {
+  xmlTag: string;
+  visibility: string;
+  fieldLabel: string;
+  displayOrder: number;
+  fieldCategory: string;
+  dynamic: string;
+  fieldMax: number;
+  fieldMin: number;
+  dataType: string;
+  enumerated: boolean;
+  defaultValue: string;
+  validationRegEx: string;
+  arrayName: string;
+  arrayLength: number;
+  exampleFormat: string;
+  enumeratedValues: EnumeratedValueInfo[];
+  value: string;
+  errorMessage: string;
+}
+
+export class ProductFieldInfoContainer {
+  public productFieldInfoList: ProductFieldInfo[];
+}
+
+/*
+export class EnumeratedValue {
+  value: EnumeratedValueInfo;
+}
+ */
+
+/*
+export class EnumeratedValueInfo {
+  enumeratedValueInfo: Tuple[];
+}
+ */
+
+export class EnumeratedValueInfo {
+  value: string;
+  label: string;
 }

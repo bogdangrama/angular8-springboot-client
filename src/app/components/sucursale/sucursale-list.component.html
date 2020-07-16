@@ -1,24 +1,39 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-      <h2>User List</h2>
+      <h2>Sucursale</h2>
     </div>
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th>Id</th>
+            <th>Cod suc.</th>
+            <th>Denumire</th>
+            <th>Adresa</th>
+            <th>Oras</th>
+            <th>Judet</th>
+            <th>Cod agent moneygram</th>
+            <th>Parola agent moneygram</th>
+            <th>POS agent MoneyGram</th>
+            <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employees | async">
-            <td>{{employee.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.emailId}}</td>
-            <td><button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <tr *ngFor="let sucursala of sucursale | async">
+            <td>{{sucursala.id}}</td>
+            <td>{{sucursala.cod}}</td>
+            <td>{{sucursala.denumire}}</td>
+            <td>{{sucursala.adresa}}</td>
+            <td>{{sucursala.oras}}</td>
+            <td>{{sucursala.judet}}</td>
+            <td>{{sucursala.codAgentMoneyGram}}</td>
+            <td>{{sucursala.parolaAgentMoneyGram}}</td>
+            <td>{{sucursala.posAgentMoneyGram}}</td>
+            <td>{{sucursala.status}}</td>
+            <td>
+                <!--<button (click)="deleteSucursala(sucursala.id)" class="btn btn-danger">Delete</button>-->
+                <button (click)="sucursalaDetails(sucursala.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
             </td>
           </tr>
         </tbody>

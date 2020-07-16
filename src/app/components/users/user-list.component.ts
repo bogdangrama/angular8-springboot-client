@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import {Sucursala} from '../../models/sucursala';
-import {SucursaleService} from '../../services/sucursale.service';
+import {User} from '../../models/user';
+import {UsersService} from '../../services/users.service';
 
 @Component({
-  selector: 'app-sucursale-list',
-  templateUrl: './sucursale-list.component.html',
-  styleUrls: ['./sucursale-list.component.css']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class SucursaleListComponent implements OnInit {
+export class UsersListComponent implements OnInit {
 
-  sucursale: Observable<Sucursala[]>;
+  users: Observable<User[]>;
 
-  constructor(private sucursaleService: SucursaleService,
+  constructor(private usersService: UsersService,
               private router: Router) {}
 
   ngOnInit() {
@@ -22,11 +22,11 @@ export class SucursaleListComponent implements OnInit {
   }
 
   reloadData() {
-    this.sucursale = this.sucursaleService.getSucursalaList();
+    this.users = this.usersService.getUserList();
   }
 
-  deleteSucursala(id: number) {
-    this.sucursaleService.deleteSucursala(id)
+  deleteSucursala(id: string) {
+    this.usersService.deleteUser(id)
       .subscribe(
         data => {
           console.log(data);
@@ -35,7 +35,7 @@ export class SucursaleListComponent implements OnInit {
         error => console.log(error));
   }
 
-  sucursalaDetails(id: number) {
-    this.router.navigate(['definireSucursala', id]);
+  userDetails(id: number) {
+    this.router.navigate(['definireUser', id]);
   }
 }

@@ -1,10 +1,17 @@
-export class User {
-  username: string;
-  numePrenume: string;
-  idSucursala: string;
-  isAdmin: string;
-  canPerformMgTransactions: string;
-  status: string;
-  usernameEdit: string;
-  dataEdit: string;
+export class ProfileResponse {
+  public profileItem: ProfileItem[];
+  public productProfileItem: ProductProfileItem[];
+}
+
+class ProfileItem {
+  public index: string;
+  public key: string;
+  public value: string;
+}
+
+class ProductProfileItem {
+  public index: string;
+  public key: string;
+  public value: string;
+  public productID: string;
 }

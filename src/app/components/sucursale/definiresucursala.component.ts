@@ -22,7 +22,9 @@ export class DefinireSucursalaComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
 
     if (this.id == null) {
-      // Sucursala noua
+      this.sucursala = new Sucursala();
+      this.sucursala.status = 'Y';
+      this.sucursala.judet = 'B1';
     }
     else {
       this.sucursalaService.getSucursala(this.id)

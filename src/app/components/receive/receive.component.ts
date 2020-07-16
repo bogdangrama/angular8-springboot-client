@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, Input, Output} from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -9,192 +9,271 @@ import {CountryInfo} from '../../models/countryInfo';
 import {Sucursala} from '../../models/sucursala';
 import {ProductFieldInfo, ProductFieldInfoContainer} from '../../models/productfieldinfo';
 import {SendValidationWrapper} from '../../models/sendvalidationwrapper';
+import {ReferenceNumberResponse} from '../../models/referenceNumberResponse';
+import {Renderer} from '@angular/compiler-cli/ngcc/src/rendering/renderer';
+import {Client} from '../../models/client';
+import {SucursaleService} from '../../services/sucursale.service';
 
 declare var $;
 
 @Component({
-  selector: 'app-send',
-  templateUrl: './send.component.html',
-  styleUrls: ['./send.component.css']
+  selector: 'app-receive',
+  templateUrl: './receive.component.html',
+  styleUrls: ['./receive.component.css']
 })
-export class SendComponent implements OnInit {
-  @ViewChild('marketingModal') marketingModal: ElementRef;
+export class ReceiveComponent implements OnInit {
+  @ViewChild('referenceNumberModal') referenceNumberModal: ElementRef;
+  @ViewChild('finalizareTranzactieModal') finalizareTranzactieModal: ElementRef;
+  @ViewChild('referenceNumberInput', {static: false}) referenceNumberInput: ElementRef;
 
   AfiseazaPas1: boolean = true;
   AfiseazaPas2: boolean = false;
   AfiseazaPas3: boolean = false;
-  AfiseazaPas4: boolean = false;
-
-  codPromotie: string;
-  feeLookup: FeeLookup = new FeeLookup();
-  feeInfoList: FeeInfo[];
-  countryInfoList: CountryInfo[];
-  selectedFeeInfo: FeeInfo;
+  hiddenPrintableReceiptDiv: boolean = true;
+  afiseazaCampuriOptionale: boolean = false;
+  referenceNumber: string;
+  referenceNumberResponse: ReferenceNumberResponse;
   productFieldInfoList: ProductFieldInfo[];
   sendValidationWrapper: SendValidationWrapper;
+  client: Client;
 
   constructor(private router: Router, private moneyGramService: MoneyGramService) {}
 
   ngOnInit() {
-    this.codPromotie = '';
+
+    this.referenceNumberResponse = new ReferenceNumberResponse();
+    this.client = new Client();
 
     setTimeout(() => {
-      $(this.marketingModal.nativeElement).modal('show');
+      $(this.referenceNumberModal.nativeElement).modal('show');
     }, 200);
 
-    this.selectedFeeInfo = null;
+    setTimeout(() => {
+      this.referenceNumberInput.nativeElement.focus();
+    }, 200);
 
-    this.moneyGramService.getCountryInfoList()
+    this.moneyGramService.getClient()
       .subscribe(results => {
           const resultsReconverted = JSON.parse(JSON.stringify(results));
-          this.countryInfoList = resultsReconverted;
-          this.feeLookup.receiveCountry = 'ROU';
-          this.feeLookup.currency = 'RON';
-          this.feeLookup.amountType = '0';
+          this.client = resultsReconverted;
         },
         error => {
         });
   }
 
-  selectCountry() {
+  referenceNumberRequest() {
+    $(this.referenceNumberModal.nativeElement).modal('show');
 
-  }
-
-  AdaugaCodPromotie() {
-    this.feeLookup.promoCode = this.codPromotie;
-    this.codPromotie = '';
-  }
-
-  DeleteCodPromotie() {
-    this.feeLookup.promoCode = null;
-  }
-
-  TreceLaPasul2() {
-    this.moneyGramService.feeLookup(this.feeLookup.receiveCountry, this.feeLookup.currency, this.feeLookup.amountType, this.feeLookup.amount.toString())
+    this.moneyGramService.referenceNumberRequest(this.referenceNumber)
       .subscribe(results => {
-          this.feeInfoList = results;
-          console.log(this.feeInfoList);
-
-          this.AfiseazaPas1 = false;
-          this.AfiseazaPas2 = true;
-
-          },
+          this.referenceNumberResponse = results;
+          $(this.referenceNumberModal.nativeElement).modal('hide');
+        },
         error => {
-          this.AfiseazaPas1 = true;
-          this.AfiseazaPas2 = false;
+          $(this.referenceNumberModal.nativeElement).modal('show');
         });
   }
 
-  ShowFeeDetails(feeInfo: FeeInfo) {
-    this.selectedFeeInfo = feeInfo;
-  }
-
-  GetFieldForProduct(feeInfo: FeeInfo) {
-    this.selectedFeeInfo = feeInfo;
-
-    let receiveAgentID = 'undefined';
-
-    if (feeInfo.receiveAgentID != null) {
-      receiveAgentID = feeInfo.receiveAgentID;
-    }
-
-    this.moneyGramService.getFieldForProductForFeeInfo(this.selectedFeeInfo)
+  TreceLaPasul2() {
+    this.moneyGramService.getFieldForProductForReferenceNumberResponse(this.referenceNumberResponse)
       .subscribe(results => {
           const resultsReconverted = JSON.parse(JSON.stringify(results));
           this.productFieldInfoList = resultsReconverted;
           console.log(this.productFieldInfoList);
 
           this.AfiseazaPas1 = false;
-          this.AfiseazaPas2 = false;
-          this.AfiseazaPas3 = true;
+          this.AfiseazaPas2 = true;
         },
         error => {
         });
   }
 
-  FinalizeazaTransferul() {
-    console.log(this.productFieldInfoList);
-
-    const productFieldInfoContainer = new ProductFieldInfoContainer();
-    productFieldInfoContainer.productFieldInfoList = this.productFieldInfoList;
-
-    this.moneyGramService.sendValidation(this.productFieldInfoList)
-      .subscribe(results => {
-          const resultsReconverted = JSON.parse(JSON.stringify(results));
-          console.log(resultsReconverted);
-
-          this.sendValidationWrapper = resultsReconverted;
-
-          //if (this.sendValidationWrapper.result === 'OK') {
-            this.AfiseazaPas1 = false;
-            this.AfiseazaPas2 = false;
-            this.AfiseazaPas3 = false;
-            this.AfiseazaPas4 = true;
-          /*
-          }
-          else {
-
-          }
-           */
-        },
-        error => {
-        });
+  InapoiLaPasul1() {
+    this.AfiseazaPas1 = true;
+    this.AfiseazaPas2 = false;
   }
 
   get visibleProductInfos() {
-    return this.productFieldInfoList.filter( x => (x.visibility === 'REQ' || x.visibility === 'OPT') &&
-                                                  (
-                                                    //x.xmlTag.toUpperCase() === ('AMOUNT').toUpperCase()
-                                                    //|| x.xmlTag.toUpperCase() === ('SENDCURRENCY').toUpperCase()
-                                                    //|| x.xmlTag.toUpperCase() === ('RECEIVECURRENCY').toUpperCase()
-                                                    /*||*/ x.xmlTag.toUpperCase() === ('DeliveryOptDisplayName').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERTITLE').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERFIRSTNAME').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERMIDDLENAME').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERLASTNAME').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERLASTNAME2').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERGENDER').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('TESTQUESTION').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('TESTANSWER').toUpperCase()
-                                                    //|| x.xmlTag.toUpperCase() === ('MESSAGEFIELD1').toUpperCase()
-                                                    //|| x.xmlTag.toUpperCase() === ('MESSAGEFIELD2').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('OPERATORNAME').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('FEEAMOUNT').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERADDRESS').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERCITY').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERZIPCODE').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERPHONECOUNTRYCODE').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERPHONE').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVEROCCUPATION').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('PCTERMINALNUMBER').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('AGENTUSESENDDATA').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERCOUNTRY').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERSTATEORPROVINCE').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('DIRECTION1').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('DIRECTION2').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('DIRECTION3').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('CUSTOMERRECEIVENUMBER').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('MARKETINGOPTIN').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('SENDPURPOSEOFTRANSACTION').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('ReasonForTransfer').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('PROOFOFFUNDS').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('SOURCEOFFUNDS').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RELATIONSHIPTORECEIVER').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('PURPOSEOFFUNDS').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERPURPOSEOFFUNDS').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RECEIVERBANKIDENTIFIER').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('EARTHPORTBANKNAME').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('BANKNAME').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('AccountNumber').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('WPBIC').toUpperCase()
-                                                    || x.xmlTag.toUpperCase() === ('RCVRBANKNAMENEW').toUpperCase()
+    return this.productFieldInfoList.filter( x => (x.visibility === 'REQ' || x.visibility === 'OPT')
+      &&
+      (
+        /*||*/ x.xmlTag.toUpperCase() === ('DeliveryOptDisplayName').toUpperCase()
+        //|| x.xmlTag.toUpperCase() === ('REFERENCENUMBER').toUpperCase()
+        || x.xmlTag.toUpperCase() === ('PIN').toUpperCase()
+        //|| x.xmlTag.toUpperCase() === ('RECEIVECURRENCY').toUpperCase()
+        || x.xmlTag.toUpperCase() === ('AGENTCHECKNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTCHECKTYPE').toUpperCase() ||
+        //x.xmlTag.toUpperCase() === ('RECEIVEAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKTYPE').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('PCTERMINALNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTUSERECEIVEDATA').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('BILLERACCOUNTNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('OTHERPAYOUTTYPE').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('OTHERPAYOUTAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDEXPIRATIONMONTH').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDEXPIRATIONYEAR').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDSWIPED').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTCONSUMERID').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTTRANSACTIONID').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('timeToLive').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('RECEIVEPURPOSEOFTRANSACTION').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('ReasonForTransfer').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('relationshipToSender').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('senderIntendedUseOfMGIServices').toUpperCase()
+      )
+    );
+  }
 
+  get visibleReqProductInfos() {
+    return this.productFieldInfoList.filter( x => (x.visibility === 'REQ')
+      &&
+      (
+        /*||*/ x.xmlTag.toUpperCase() === ('DeliveryOptDisplayName').toUpperCase()
+        //|| x.xmlTag.toUpperCase() === ('REFERENCENUMBER').toUpperCase()
+        || x.xmlTag.toUpperCase() === ('PIN').toUpperCase()
+        //|| x.xmlTag.toUpperCase() === ('RECEIVECURRENCY').toUpperCase()
+        || x.xmlTag.toUpperCase() === ('AGENTCHECKNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTCHECKTYPE').toUpperCase() ||
+        //x.xmlTag.toUpperCase() === ('RECEIVEAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKTYPE').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('PCTERMINALNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTUSERECEIVEDATA').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('BILLERACCOUNTNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('OTHERPAYOUTTYPE').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('OTHERPAYOUTAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDEXPIRATIONMONTH').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDEXPIRATIONYEAR').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDSWIPED').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTCONSUMERID').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTTRANSACTIONID').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('timeToLive').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('RECEIVEPURPOSEOFTRANSACTION').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('ReasonForTransfer').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('relationshipToSender').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('senderIntendedUseOfMGIServices').toUpperCase()
+      )
+    );
+  }
 
-                                                  )
-                                           );
+  get visibleOptProductInfos() {
+    return this.productFieldInfoList.filter( x => (x.visibility === 'OPT')
+      &&
+      (
+        /*||*/ x.xmlTag.toUpperCase() === ('DeliveryOptDisplayName').toUpperCase()
+        //|| x.xmlTag.toUpperCase() === ('REFERENCENUMBER').toUpperCase()
+        || x.xmlTag.toUpperCase() === ('PIN').toUpperCase()
+        //|| x.xmlTag.toUpperCase() === ('RECEIVECURRENCY').toUpperCase()
+        || x.xmlTag.toUpperCase() === ('AGENTCHECKNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTCHECKTYPE').toUpperCase() ||
+        //x.xmlTag.toUpperCase() === ('RECEIVEAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKTYPE').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CUSTOMERCHECKAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('PCTERMINALNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTUSERECEIVEDATA').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('BILLERACCOUNTNUMBER').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('OTHERPAYOUTTYPE').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('OTHERPAYOUTAMOUNT').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDEXPIRATIONMONTH').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDEXPIRATIONYEAR').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('CARDSWIPED').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTCONSUMERID').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('AGENTTRANSACTIONID').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('timeToLive').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('RECEIVEPURPOSEOFTRANSACTION').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('ReasonForTransfer').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('relationshipToSender').toUpperCase() ||
+        x.xmlTag.toUpperCase() === ('senderIntendedUseOfMGIServices').toUpperCase()
+      )
+    );
   }
 
   sortProductFieldInfoListBy(prop: string) {
     return this.visibleProductInfos.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+  }
+
+  TreceLaPasul3() {
+    this.AfiseazaPas1 = false;
+    this.AfiseazaPas2 = false;
+    this.AfiseazaPas3 = true;
+  }
+
+  TiparesteDocument() {
+    setTimeout(() => {
+      $(this.finalizareTranzactieModal.nativeElement).modal('show');
+    }, 200);
+
+    this.hiddenPrintableReceiptDiv = false;
+    const printContent = document.getElementById("hiddenPrintableReceiptDiv");
+    let innerHTML = printContent.innerHTML;
+    this.hiddenPrintableReceiptDiv = true;
+    const WindowPrt = window.open('', '', 'menubar=yes,resizable=yes,scrollbars=yes,width=900,height=600');
+    WindowPrt.document.write(innerHTML);
+    setTimeout(function() { // wait until all resources loaded
+      WindowPrt.document.close();
+      WindowPrt.focus();
+      WindowPrt.print();
+      WindowPrt.close();
+    }, 450);
+  }
+
+  sortRequiredProductFieldInfoListBy(prop: string) {
+    return this.visibleReqProductInfos.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+  }
+
+  sortOptionalProductFieldInfoListBy(prop: string) {
+    return this.visibleOptProductInfos.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+  }
+
+  getTranslationDictionary() {
+    let dictionary = new Map<string, string>();
+
+    dictionary.set("receiverFirstName", "Prenume primitor");
+    dictionary.set("receiverLastName", "Nume primitor");
+    dictionary.set("Purpose of Transaction", "Scopul tranzactiei");
+    dictionary.set("Business Expense", "Cheltuiala de afaceri");
+    dictionary.set("Relationship to Sender", "Legatura cu transmitatorul");
+
+    return dictionary;
+  }
+
+  translate(key: string) {
+    let dictionary = this.getTranslationDictionary();
+    let translationValue = dictionary.get(key);
+
+    if (translationValue != null) {
+      return translationValue;
+    }
+    else {
+      return key;
+    }
+  }
+
+  AfiseazaCampuriOptionale() {
+    this.afiseazaCampuriOptionale = !this.afiseazaCampuriOptionale;
+  }
+
+  GetProductFieldInfoListForReceipt(xmlTag: string) {
+    try {
+      if (this.productFieldInfoList != null) {
+        let productFieldInfo = this.productFieldInfoList.find(x => x.xmlTag.toUpperCase() === xmlTag.toUpperCase());
+        return productFieldInfo.value;
+      } else {
+        let productFieldInfo = new ProductFieldInfo();
+        return productFieldInfo.value;
+      }
+    }
+    catch (e) {
+
+    }
+    return '';
+  }
+
+  setReference(reference: string) {
+    this.referenceNumber = reference;
   }
 }

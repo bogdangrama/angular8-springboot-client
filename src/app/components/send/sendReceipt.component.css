@@ -1,119 +1,205 @@
-.FeeLookupLabel {
-  width: 200px;
-  height: 20px;
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.07px;
-  color: #3c3c3c;
+BODY
+{
+  margin-top: 5px;
 }
 
-.FeeLookupInfoLabel {
-  width: 100%;
-  height: 17px;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.06px;
-  color: #7f7f7f;
+A
+{
+  font-size: 8pt;
+  color: #6495ed;
+  font-family: Arial,Tahoma,Verdana;
+  text-decoration: underline;
 }
 
-.DivInfoPasSend {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
-  padding: 20px 20px 20px 20px;
+A:hover
+{
+  color: #ff3300;
+  font-family: Arial,Tahoma,Verdana;
+  text-decoration: none;
 }
 
-.DivInfoPasFeeSelection {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
+.a2
+{
+  FONT-SIZE: 8pt;
+  COLOR: #000066;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+  TEXT-DECORATION: none
 }
 
-.DivComisionare {
-  width: 100%;
-  height: 700px;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
-  padding: 20px 20px 20px 20px;
+.fn_5
+{
+  FONT-SIZE: x-small;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+.fn_6
+{
+  FONT-SIZE: 6pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+.fn_7
+{
+  FONT-SIZE: 7pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
 }
 
-.DivPaginaComisionare {
-  padding-top: 40px;
-  padding-left: 40px;
+.fn_8
+{
+  FONT-SIZE: 8pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
 }
 
-.ButonPasulUrmator {
-  width: 186px;
-  height: 48px;
-  border-radius: 5px;
-  background-color: #0075ff;
-  color: white;
+.fn_8_bl
+{
+  FONT-SIZE: 8pt;
+  COLOR: #00008b;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
 }
 
-.divAcordMarketing {
-  width: 498px;
-  height: 231px;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.57;
-  letter-spacing: 0.06px;
-  color: #5b5b5b;
-}
-
-.LabelCodPromotie {
-  width: 158px;
-  height: 17px;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.06px;
-  color: #0075ff;
-}
-
-.DivLabelCodPromotie {
-  width: 100%; /*760px;*/
-  height: 932px;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
-}
-
-.DivGFFP {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
-  padding: 20px 20px 20px 20px;
-}
-
-.TextIncaseazaInSibcor {
-  width: 655px;
-  height: 36px;
-  font-family: Inter;
-  font-size: 20px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.8;
-  letter-spacing: 0.5px;
-  text-align: center;
-  color: #131415;
+.fn_8_b
+{
+  FONT-SIZE: 8pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
   font-weight: bold;
 }
+
+.fn_8_gr
+{
+  FONT-SIZE: 8pt;
+  COLOR: #99cc66;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_8_grc
+{
+  FONT-SIZE: 8pt;
+  COLOR: #99cc66;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+  color: #3399FF;
+}
+
+
+.fn_9
+{
+  FONT-SIZE: 9pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_9_bl
+{
+  FONT-SIZE: 9pt;
+  COLOR: #00008b;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_9_gr
+{
+  FONT-SIZE: 9pt;
+  COLOR: #99cc66;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_9_white
+{
+  font-size: 9pt;
+  color: #FFFFFF;
+  font-family: Arial,Tahoma,Verdana;
+}
+
+
+.fn_10
+{
+  FONT-SIZE: 10pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+  text-align: left;
+}
+
+.fn_10_white
+{
+  font-size: 10pt;
+  color: #FFFFFF;
+  font-family: Arial,Tahoma,Verdana;
+}
+.fn_10_b
+{
+  FONT-SIZE: 10pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+  font-weight: bold;
+}
+.fn_12
+{
+  FONT-SIZE: 12pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_14
+{
+  FONT-SIZE: 14pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_16
+{
+  FONT-SIZE: 16pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_18
+{
+  FONT-SIZE: 18pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.fn_20
+{
+  FONT-SIZE: 20pt;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.DataGrid1
+{
+  BORDER-RIGHT: 1px solid;
+  BORDER-TOP: 1px solid;
+  BORDER-LEFT: 1px solid;
+  BORDER-BOTTOM: 1px solid;
+  BORDER-COLLAPSE: collapse
+}
+.err_1
+{
+  FONT-SIZE: 9pt;
+  COLOR: #ff0000;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+.err_8
+{
+  FONT-SIZE: 8pt;
+  COLOR: #ff0000;
+  FONT-FAMILY: Arial,Tahoma,Verdana;
+}
+
+.handleImage
+{ margin-left:auto;
+  margin-right:auto;
+}
+
+.modalPopup
+{
+  background-color:#ffffdd;
+  border-width:3px;
+  border-style:solid;
+  border-color:Gray;
+  padding:3px;
+  width:300px;
+}
+
+.modalBackground
+{
+  background-color:Gray;
+  filter:alpha(opacity=70);
+  opacity:0.7;
+
+}
+.style2
+{
+  width: 82px;
+}
+

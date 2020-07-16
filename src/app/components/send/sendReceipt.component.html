@@ -1,766 +1,1210 @@
-<div class="row">
-  <div class="col-lg-9">
-    <div class="DivPaginaComisionare">
+<div id="printableSendReceiptDiv">
 
-      <div *ngIf="AfiseazaPas1">
+  <table cellspacing="0" cellpadding="0" width="950px">
+    <tr>
+      <td align="left"width = "250px" >
+        <label class="fn_11" Font-Bold="true">SEND FORM / <br/> FORMULAR DE TRIMITERE </label>
+        <br />
+        <label ID="Label2" class="fn_9" Font-Bold="false">DESTINATION / DESTINATIE</label>
+      </td>
 
-        <div class="modal fade" #marketingModal id="marketingModal" tabindex="-1" role="dialog" aria-labelledby="marketingModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content"  style="width: 600px; margin-top: 250px;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="marketingModalLabel">Acord de marketing pentru <b>Covaci Simona Adriana</b></h5>
-              </div>
-              <div class="modal-body">
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-12">
-                    7.2. Completand si semnand prezentul formular, sunteti de acord ca Datele dvs. Personale sa fie prelucrate si de catre Agentul nostru, Banca Comerciala Romana (BCR), in calitatea sa de operator, in scopul participarii si desemnarii castigatorilor in cadrul campaniilor de promovare derulate de catre BCR, realizarii de rapoarte statistice cu privire la clienţii, produsele şi serviciile BCR, informarii cu privire la alte acţiuni/campanii desfăşurate în viitor, in scopul participarii la campaniile promotionale sau de marketing organizate de MoneyGram si/sau Banca Comerciala Romana, inclusiv campaniile cu tragere la sorti si in scopul transmiterii de catre BCR DE informatii despre campanii, activitati/actiuni viitoare de marketing.
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Nu este de acord</button>
-                <button type="button" class="btn btn-primary">Este de acord</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <td align= "right" valign="top">
+        <br />
+      </td>
+    </tr>
+  </table>
 
-        <div class="DivInfoPasSend">
-          <div class="row">
-            <div class="col-lg-3" style="text-align: center;">
-              1 Info Transfer
-            </div>
-            <div class="col-lg-3" style="text-align: center;">
-              2 Oferta
-            </div>
-            <div class="col-lg-3" style="text-align: center;">
-              3 Detalii destinatar
-            </div>
-            <div class="col-lg-3" style="text-align: center;">
-              4 Tiparire document
-            </div>
-          </div>
-        </div>
+  <table cellpadding="0" cellspacing="0" width="950px">
+    <tr>
+      <td  valign="top">
+        <table  cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse" width="680">
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="3">
+                <tr>
+                  <td valign="top">
+                    <label ID="Label3" class="fn_9"><b>AVERTISMENT DE FRAUDĂ</b> <br /><b>NU</b> trimiteţi bani pentru
+                      a revendica premii sau caştiguri la loterie, sau în baza promisiunii că veţi primi  o sumă mare de bani. <b>NU</b> trimiteţi
+                      bani deoarece vi s-a "garantat" un  card de credit sau un împrumut</label>
+                  </td>
 
-        <div style="padding-top: 20px; padding-bottom: 20px;">
-          <h2>Analiza comision</h2>
-          <label class="FeeLookupInfoLabel">Pentru a putea calcula taxele, te rog sa introduci datele transferului mai jos:</label>
-        </div>
+                  <td valign="top">
+                    <label ID="Label4" class="fn_9"><b>NU</b> trimiteţi bani ca răspuns la o
+                      oferta primită prin Internet sau prin telefon de care nu sunteţi sigur/a că este legitimă. <b>NU</b> trimiteţi bani unei persoane
+                      pe care nu o cunoaşteţi sau a cărei identitate nu o puteţi verifica. <b>NU</b> daţi numarul</label>
+                  </td>
 
-        <div class="DivComisionare">
-        <div>
-          <div>
-            <div>
-              <div class="form-group">
-                <label for="receiveCountry" class="FeeLookupLabel">Tara primire</label>
-                <select id="receiveCountry"
-                        name="receiveCountry"
-                        [(ngModel)]="feeLookup.receiveCountry"
-                        class="form-control"
-                        (change)="selectCountry()">
+                  <td valign="top">
+                    <label ID="Label5" class="fn_9">de referinţă MoneyGram format<br />din 8 cifre unei terţe părţi.<br />
+                      DACĂ AŢI REALIZAT UNA DINTRE ACŢIUNILE DE MAI SUS ŞI DORIŢI SĂ OPRIŢI TRANSFERUL, TREBUIE SĂ ÎI SOLICITAŢI IMEDIAT AGEN- TULUI DVS. SĂ ÎL ANULEZE</label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width = "100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label7" class="fn_9">Country / Ţara </label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_receivecountry" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                  <td>
+                    <label ID="Label8" class="fn_9">City / Oraşul</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_receivercity" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <label ID="Label6" class="fn_9">If there receive agent at the aboce destination? If not, please ask staff to<br />
+                      confirm. / Există un agent la destinaţia de mai sus? Dacă nu, rugaţi personalul să confirme.</label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-                          <option *ngFor="let country of countryInfoList"
-                            value="{{country.CountryCode}}"
-                            [selected]="country.CountryCode == this.feeLookup.receiveCountry">{{country.CountryName}}
-                          </option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <div class="form-group">
-                <label class="FeeLookupLabel">Valuta depusa</label> <br />
-                <!--<input type="radio" id="currencyToateOptiunile" name="currencyToateOptiunile" value="" [(ngModel)]="feeLookup.currency">
-                <label for="currencyToateOptiunile">&nbsp;Toate optiunile</label><br>-->
-                <input type="radio" id="currencyRon" name="currencyRon" value="RON" [(ngModel)]="feeLookup.currency">
-                <label for="currencyRon">&nbsp;RON</label><br>
-                <input type="radio" id="currencyEur" name="currencyEur" value="EUR" [(ngModel)]="feeLookup.currency">
-                <label for="currencyEur">&nbsp;EUR</label><br>
-                <input type="radio" id="currencyUsd" name="currencyUsd" value="USD" [(ngModel)]="feeLookup.currency">
-                <label for="currencyUsd">&nbsp;USD</label>
-              </div>
-            </div>
-            <div>
-              <div class="form-group">
-                <label class="FeeLookupLabel">Tip comisionare</label> <br />
-                <input type="radio" id="tipComisionare0" name="tipComisionare0" value="0" [(ngModel)]="feeLookup.amountType">
-                <label for="tipComisionare0">&nbsp;Incluzand comisioanele</label><br>
-                <input type="radio" id="tipComisionare1" name="tipComisionare1" value="1" [(ngModel)]="feeLookup.amountType">
-                <label for="tipComisionare1">&nbsp;Excluzand comisioanele</label><br>
-                <!--<input type="radio" id="tipComisionare2" name="tipComisionare2" value="2" [(ngModel)]="feeLookup.amountType">
-                <label for="tipComisionare2">&nbsp;Suma primita</label>-->
-              </div>
-            </div>
-            <div>
-              <div class="form-group">
-                <label for="amount" class="FeeLookupLabel">Suma</label>
-                <input type="number" class="form-control" id="amount" [(ngModel)]="feeLookup.amount" required name="amount">
-              </div>
-            </div>
-          </div>
-        </div>
+          <tr>
+            <td>
+              <label ID="Label13" class="fn_10" Font-Bold="true"> SENDER / EXPEDITOR</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 0 0 0">
+              <table border="1" style="border-collapse:collapse" cellpadding="0" cellspacing="0" width = "100%">
+                <tr>
+                  <td rowspan="2" valign="top">
+                    <label ID="Label30" class="fn_9">Title (please tick)/ Titlu (vă rugăm bifaţi)</label>
+                  </td>
+                  <td>Mr./<br />D-nul</td>
+                  <td>Mrs./<br />D-na</td>
+                  <td>Miss./<br />D-ra</td>
 
-          &nbsp;
-          <hr />
-          <div>
+                  <td valign="top">
+                    <label ID="Label29" class="fn_9">Other (please state) / Alt titlu (vă rugăm precizaţi)</label>
+                  </td>
+                </tr>
+                <tr>
 
-            <div class="modal fade" #promotionCodeModal id="promotionCodeModal" tabindex="-1" role="dialog" aria-labelledby="promotionCodeModal" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content"  style="width: 600px; margin-top: 250px;">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="promotionCodeModalLabel">Cod promotie</h5>
-                  </div>
-                  <div class="modal-body" style="padding: 0;">
-                    <img src="../../../assets/images/promotionCodeModalImage.png" style="width: 100%;">
-                    <div class="row" style="margin: 20px 20px 20px 20px;">
-                      <div class="col-lg-12">
-                        <input type="text" class="form-control" id="codPromotieInput" [(ngModel)]="codPromotie" required name="codPromotieInput">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Inchide</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="AdaugaCodPromotie()">Aplica codul</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <td align="center">&nbsp;<label ID="lbl_send_sender_mr"
+                                                  class="fn_10" Font-Bold="True"></label></td>
+                  <td align="center">&nbsp;<label ID="lbl_send_sender_mrs"
+                                                  class="fn_10" Font-Bold="True"></label></td>
+                  <td align="center">&nbsp;<label ID="lbl_send_sender_miss"
+                                                  class="fn_10" Font-Bold="True"></label></td>
+                  <td align="center">&nbsp;<label ID="lbl_send_sender_other"
+                                                  class="fn_10" Font-Bold="True"></label></td>
 
-            <div>
-                <a  *ngIf="feeLookup.promoCode == null" class="LabelCodPromotie" data-toggle="modal" data-target="#promotionCodeModal">+ Ai un cod de promotie?</a>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-                <label *ngIf="feeLookup.promoCode">Cod promotie: {{feeLookup.promoCode}}</label> &nbsp;&nbsp;&nbsp;
-                <img *ngIf="feeLookup.promoCode" src="../../../assets/images/deleteButtonImage.png" (click)="DeleteCodPromotie()">
-            </div>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="230px">
+                    <label ID="Label31" class="fn_9">First Name / Primul prenume</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderfirstname" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="230px">
+                    <label ID="Label32" class="fn_9">Middle Name / Al doilea prenume</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_sendermiddlename" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="230px">
+                    <label ID="Label34" class="fn_9">Surname / Nume</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderlastname" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label33" class="fn_9">Date of Birth (optional) / Data naşterii (opţional)</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderdob2" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label36" class="fn_9">Town / City / Oraşul</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_sendercity" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label38" class="fn_9">Postcode / Codul poştal</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderzipcode" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label40" class="fn_9">Country / Ţara</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_sendercountry" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-            <hr />
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="250px">
+                    <label ID="Label35" class="fn_9">Contact Tel No. / Nr.de telefon de contact<br />Please include area code / Vă rugăm includeţi prefixul localităţii</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderhomephone" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-            <div style="text-align: right;">
-              <button type="submit" class="ButonPasulUrmator" (click)="TreceLaPasul2()">Pasul urmator</button>
-              <button type="submit" class="ButonPasulUrmator" (click)="PrintForm()">Printeaza</button>
-            </div>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="350px" >
+                    <label ID="Label39" class="fn_9">Residential status of the resident/non resident sender<br />Statutul de rezident al expeditorului (rezident / ne-rezident)</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderresidentialstatus" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label37" class="fn_9">Citizenship / Cetăţenia</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_sendercitizenship" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-          </div>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label41" class="fn_9">Place of Birth / Locul naşterii</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_locNastere" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="300px">
+                    <label ID="Label43" class="fn_9">Place of employment or name of the employer<br />Locul de muncă şi numele angajatorului</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderclientjob" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_senderoccupation1" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="250px">
+                    <label ID="Label45" class="fn_9">Personal code / CNP</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_CNP" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td  width="300px" rowspan="2">
+                    <label ID="Label47" class="fn_9">Date of issue and authority /<br />Data eliberarii şi autoritatea emitentă</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label ID="lbl_send_senderissuing_date" class="fn_10"
+                           Font-Bold="True"></label>
+                    <br />
+                    <label ID="lbl_send_senderissuingauthority" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label42" class="fn_9">The nature and reason for transaction /<br />Natura şi motivul tranzacţiei</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_reason_for_transaction" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label ID="Label44" class="fn_10" Font-Bold="true"> RECEIVER / DESTINATAR</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 0 0 0">
+              <table border="1" style="border-collapse:collapse" cellpadding="2" cellspacing="0" width = "100%">
+                <tr>
+                  <td rowspan="2" valign="top">
+                    <label ID="Label46" class="fn_9">Title (please tick)/<br />Titlu<br />(vă rugăm bifaţi)</label>
+                  </td>
+                  <td>Mr./<br />D-nul</td>
+                  <td>Mrs./<br />D-na</td>
+                  <td>Miss./<br />D-ra</td>
 
-        </div>
+                  <td valign="top">
+                    <label ID="Label48" class="fn_9">Other (please state) /<br />Alt titlu (vă rugăm precizaţi)</label>
+                  </td>
+                </tr>
+                <tr>
 
-        <br /><br /><br /><br /><br /><br />
+                  <td align="center">&nbsp;<label ID="lbl_send_receiver_mr"
+                                                  class="fn_10" Font-Bold="True"></label></td>
+                  <td align="center">&nbsp;<label ID="lbl_send_receiver_mrs"
+                                                  class="fn_10" Font-Bold="True"></label></td>
+                  <td align="center">&nbsp;<label ID="lbl_send_receiver_miss"
+                                                  class="fn_10" Font-Bold="True"></label></td>
+                  <td align="center">&nbsp;<label ID="lbl_send_receiver_other"
+                                                  class="fn_10" Font-Bold="True"></label></td>
 
-      </div>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td  width="230px">
+                    <label ID="Label49" class="fn_9">First Name / Primul prenume</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_receiverfirstname" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td  width="230px">
+                    <label ID="Label51" class="fn_9">Middle Name / Al doilea prenume</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_receivermiddlename" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="230px">
+                    <label ID="Label53" class="fn_9">Surname / Nume</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_receiverlastname" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label ID="Label50" class="fn_10" Font-Bold="true"> TRANZACTION / TRANZACŢIE</label>
+            </td>
+          </tr>
 
-      <div *ngIf="AfiseazaPas2">
+          <tr>
+            <td>
+              <table cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td colspan="2">
+                    <label ID="Label52" class="fn_9">Amount to be sent / Suma care urmeaza sa fie trimisa</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td  width="150px">
+                    <label ID="Label61" class="fn_9">In words / In litere</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </td>
+                  <td>
+                    <label ID="lbl_send_amount_to_be_sent_words"
+                           class="fn_10" Font-Bold="True"></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td  width="150px">
+                    <label ID="Label62" class="fn_9">In figures / In cifre</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </td>
+                  <td>
+                    <label ID="lbl_send_amount" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px">
+                    <label ID="Label55" class="fn_9">Test Question /<br />Intrebare de verificare</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_testquestion" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width = "200px">
+                    <label ID="Label57" class="fn_9">Answer / Raspuns</label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_testanswer" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="200px" rowspan="2">
+                    <label ID="Label59" class="fn_9">Mesaage / Mesaj<br />Max.10 words /<br />Max.10 cuvinte</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label ID="lbl_send_messagefield1" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                  <td>
+                    <label ID="lbl_send_messagefield2" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
 
-        <div class="DivInfoPasFeeSelection">
-          <div class="row">
-            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
-              1 Info Transfer
-            </div>
-            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
-              2 Oferta
-            </div>
-            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
-              3 Detalii destinatar
-            </div>
-            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
-              4 Tiparire document
-            </div>
-          </div>
-        </div>
+      <td align= "center">&nbsp;&nbsp;</td>
 
-        <div style="padding-top: 20px; padding-bottom: 20px;">
-          <h2>Oferte transfer</h2>
-          <label class="FeeLookupInfoLabel">Pentru a trece mai departe, te rog selecteaza una din ofertele de mai jos apasand pe sageata albastra:</label>
-        </div>
+      <td valign="top">
+        <table border="1" style="border-collapse:collapse" cellpadding="2" cellspacing="0" width="270px">
+          <tr >
+            <td align="left" >
+              <label ID="Label9" class="fn_10" Font-Bold="true" > AGENT USER ONLY / <br />NUMAI PENTRU UZUL AGENTULUI</label>
 
-        <div style="height: 900px;">
-          <table id="datatableFees" class="table table-hover" style="background-color: white; border-radius: 8px;">
-            <thead>
-              <th style="text-align: center;">COMISION</th>
-              <th style="text-align: center;">TRIMIS</th>
-              <th style="text-align: center;">PRIMIT</th>
-              <th style="text-align: center;">MONEDA</th>
-              <th style="text-align: center;">SERVICIU</th>
-              <th style="text-align: center;">NUME AGENT</th>
-              <th></th>
-              <th></th>
-            </thead>
-            <tr *ngFor="let feeInfo of feeInfoList">
-              <td style="text-align: right;">
-                {{feeInfo.sendAmounts.totalSendFees | number: '.2'}}
-              </td>
-              <td style="text-align: right;">
-                {{feeInfo.sendAmounts.sendAmount | number: '.2'}}
-              </td>
-              <td style="text-align: right;">
-                {{feeInfo.receiveAmounts.receiveAmount | number: '.2'}}
-              </td>
-              <td  style="text-align: center;">
-                {{feeInfo.sendAmounts.sendCurrency}} - {{feeInfo.receiveAmounts.payoutCurrency}}
-              </td>
-              <td>
-                {{feeInfo.deliveryOptDisplayName}}
-              </td>
-              <td>
-                {{feeInfo.receiveAgentAbbreviation}} - {{feeInfo.receiveAgentName}}
-              </td>
-              <td>
-                <a data-toggle="modal" data-target="#exampleModal" (click)="ShowFeeDetails(feeInfo)">
-                  <img src="../../../assets/images/TransactionDetailsButton.png">
-                </a>
-              </td>
-              <td>
-                <a (click)="GetFieldForProduct(feeInfo)">
-                  <img src="../../../assets/images/GoToValidationButton.png">
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%">
+                <tr>
+                  <td>
+                    <label ID="Label10" class="fn_9">Office Name / Stamp / Numele /  Ştampila unităţii (either/or) / (sau)</label>
 
-        <!-- Modal -->
-        <div *ngIf="selectedFeeInfo" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content"  style="width: 600px; margin-top: 250px;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Comision:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.sendAmounts.totalSendFees | number: '.2'}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Comision discount:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.sendAmounts.totalDiscountAmount | number: '.2'}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Comision trimis:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveAmounts.totalReceiveFees | number: '.2'}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Total suma trimisa:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.sendAmounts.totalAmountToCollect | number: '.2'}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Suma primire:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveAmounts.receiveAmount | number: '.2'}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Total suma primire:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveAmounts.totalReceiveAmount | number: '.2'}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Tip moneda trimisa:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.sendAmounts.sendCurrency}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Tip moneda retragere:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveAmounts.receiveCurrency}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Rata de schimb:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.validExchangeRate}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Tara de primire:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveCountry}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Tip serviciu:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.deliveryOptDisplayName}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Abreviere agent primire:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveAgentAbbreviation}}
-                  </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-lg-6" style="padding-left: 50px;">
-                    Nume agent primire:
-                  </div>
-                  <div class="col-lg-6" style="font-weight: bold;">
-                    {{selectedFeeInfo.receiveAgentName}}
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Inchide</button>
-                <button type="button" class="btn btn-primary">Selecteaza oferta</button>
-              </div>
-            </div>
-          </div>
-        </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_sucursala_info" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td>
+              <table width="100%">
+                <tr>
+                  <td>
+                    <label ID="Label11" class="fn_9">Date / Data </label>
+                  </td>
+                  <td align="center">
+                    <label ID="lbl_send_date" class="fn_10" Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label12" class="fn_9">MoneyGram Operator ID Number /
+                      Numarul ID al operatorului MoneyGram<br />For voice transactions only / Numai pentru tranzacţii vocale</label>
 
-      </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_operatorname" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
 
-      <div *ngIf="AfiseazaPas3">
+            <td style="border-color:#808080">
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label14" class="fn_9">Amount Sent (exc. fee) / Sumă trimisă  (exclusiv comision)</label>
 
-        <div class="DivInfoPasFeeSelection">
-          <div class="row">
-            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
-              1 Info Transfer
-            </div>
-            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
-              2 Oferta
-            </div>
-            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
-              3 Detalii destinatar
-            </div>
-            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
-              4 Tiparire document
-            </div>
-          </div>
-        </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_suma_amount" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td style="border-color:#808080">
+              <table width="100%">
+                <tr>
+                  <td>
+                    <label ID="Label15" class="fn_9">Consumer Fee / Comision</label>
 
-        <div style="padding-top: 20px; padding-bottom: 20px;">
-          <h2>Detalii destinatar</h2>
-          <label class="FeeLookupInfoLabel">Completeaza formularul de mai jos cu detaliile celui care primeste suma de bani:</label>
-        </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_fee_amount" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td style="border-color:#808080">
+              <table width="100%">
+                <tr>
+                  <td>
+                    <label ID="Label16" class="fn_9">Total to be collected / Total de încasat</label>
 
-        <div class="DivGFFP">
-          <div *ngFor="let productFieldInfo of sortProductFieldInfoListBy('displayOrder')">
-            <div>
-              <div class="form-group">
-                <label [attr.for]="'input' + productFieldInfo.xmlTag" class="FeeLookupLabel" style="width: 500px;">{{productFieldInfo.fieldLabel}}</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_totalamount" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td colspan="2">
+                    <label ID="Label17" class="fn_9">Sender's type of ID and number / Tipul şi  numărul actului de identitate al expeditorului</label>
 
-                <input *ngIf="productFieldInfo.enumerated == false" [(ngModel)]="productFieldInfo.value" class="form-control" [attr.id]="'input' + productFieldInfo.xmlTag" [attr.name]="'input' + productFieldInfo.xmlTag">
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_senderphotoidtype" class="fn_10"
+                           Font-Bold="True"></label>&nbsp;&nbsp;
+                  </td>
+                  <td align="left">
+                    <label ID="lbl_send_senderphotoidnumber" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label18" class="fn_9">Issuing Jurisdiction / State / Country  Autoritatea / Statul / Ţara emitenta</label>
 
-                <select *ngIf="productFieldInfo.enumerated"
-                        [attr.id]="'select' + productFieldInfo.xmlTag"
-                        [attr.name]="'select' + productFieldInfo.xmlTag"
-                        [(ngModel)]="productFieldInfo.value"
-                        class="form-control">
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_senderphotoidcountry"
+                           class="fn_10" Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label191" class="fn_9">For transactions requiring additional  information: / Pentru tranzacţii care necesită  informaţii suplimentare</label>
 
-                  <option *ngFor="let info of productFieldInfo.enumeratedValues"
-                          value="{{info.value}}">{{info.label}}
-                  </option>
-                </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_additional_info" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label20" class="fn_9">Sender's date of birth / Data naşterii  expeditorului</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_senderdob1" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label21" class="fn_9">Sender's Occupation /   Ocupaţia expeditorului</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_senderoccupation2" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-              </div>
-            </div>
-          </div>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label22" class="fn_9">Receive information /    Informaţii despre primire</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_receive_info" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width = "40%">
+                    <label ID="Label23" class="fn_9">Receive currency /   Monedă de plată</label>
+                  </td>
+                  <td align="center">
+                    <label ID="lbl_send_receivecurrency" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td >
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width = "40%">
+                    <label ID="Label24" class="fn_9">Exchange rate /   Curs valutar</label>
+                  </td>
+                  <td align="center">
+                    <label ID="lbl_send_validExchangeRate" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <label ID="Label25" class="fn_9">Received amount /   Suma primită</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <label ID="lbl_send_expectedreceiveamount_1" class="fn_10"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr >
+            <td>
+              <table width="100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width = "40%">
+                    <label ID="Label26" class="fn_9">Reference No. /   Nr. de referinţa</label>
 
-          <hr />
-          <div>
+                  </td>
+                  <td align="center" style="text-align: left">
+                    <label ID="lbl_send_reference" class="fn_20"
+                           Font-Bold="True"></label>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-          <div *ngIf="sendValidationWrapper">
-            <div *ngIf="sendValidationWrapper.result !== 'OK'">
-              <div *ngFor="let error of sendValidationWrapper.errors">
-                [{{error.offendingField}}] - [{{error.errorCode}}] - {{error.errorString}}
-              </div>
-            </div>
-          </div>
-
-          <div style="text-align: right;">
-            <button type="submit" class="ButonPasulUrmator" (click)="FinalizeazaTransferul()">Finalizeaza transferul</button>
-          </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div *ngIf="AfiseazaPas4">
-
-        <div class="DivInfoPasFeeSelection">
-          <div class="row">
-            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
-              1 Info Transfer
-            </div>
-            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
-              2 Oferta
-            </div>
-            <div class="col-lg-3" style="text-align: center; background-color: #01b25a; color: white; padding: 20px 20px 20px 20px;">
-              3 Detalii destinatar
-            </div>
-            <div class="col-lg-3" style="text-align: center; padding: 20px 20px 20px 20px;">
-              4 Tiparire document
-            </div>
-          </div>
-        </div>
-
-        <br /> <br />
-
-        <div class="DivGFFP">
-
-          <div class="row">
-
-            <div style="width: 100%; text-align: center;">
-
-              <div class="row">
-                <div class="col-lg-12" style="text-align: center;">
-                  <img src="../../../assets/images/IncasasreBaniSend.png" />
-                </div>
-              </div>
-
+          <tr >
+            <td>
+              <label ID="Label27" class="fn_9">Test Q&As are compulsory in certain countries
+                - ask your service representative for further  details. Test Q&As can never be used to  guarantee the
+                security of a money transfer.<br /> Întrebările de verificare sunt o cerinţă  obligatorie în unele ţari - pentru detalii
+                suplimentare întrebaţi reprezentantul  serviciului. Întrebările de verificare nu pot fi   utilizate pentru a garanta securitatea unui
+                transfer de bani</label>
+            </td>
+          </tr>
+          <tr >
+            <td>
+              <label ID="Label28" class="fn_9">Sender's signature / Semnatura expeditorului</label>
               <br /><br />
+            </td>
+          </tr>
 
-              <div class="row">
-                <div class="col-lg-12" style="text-align: center;">
-                  <h3>Incaseaza suma in Sibcor pentru a putea tipari documentul</h3>
-                </div>
-              </div>
+        </table>
+      </td>
+    </tr>
 
-              <div class="row">
-                <div class="col-lg-12" style="text-align: center;">
-                  <h5>
-                    Dupa incasarea sumei in <b>Sibcor</b>, reintoarce-te pentru a <br /> finaliza tiparirea documentului.
-                  </h5>
-                </div>
-              </div>
+  </table>
+  <label ID="Label85" class="fn_9">Delivery option:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <label ID="lbl_send_deliveryoption" class="fn_10" Font-Bold="true"></label>
+  <p style="page-break-after:always">&nbsp;</p>
 
-              <br />
+  <table width="950px"  cellpadding="0" cellspacing="0">
+    <tr>
+      <td bgcolor="#666699">
+        <label ID="Label610" class="fn_9">SIGNATURE / SEMNATURA</label>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:justify">
+        <label ID="Label63" class="fn_5">I state my own responsibility for the send of MoneyGram transfer on the terms as specified below. / Declar ca sunt în întregime responsabil
+          pentru ordonarea transferului MoneyGram in termenii stabiliţi in formularul de mai jos.<br />
+          The undersigned hereby declares that the information provided in this Send Form is true and undertakes to notify the regulated entity on
+          any amendment in respect to the above. Provision of false statement is punishable by Criminal Law. / Subsemnatul, declar prin prezenţa ca
+          informatiile oferite in acest Formular de Trimitere sunt adevarate si îmi asum responsabilitatea de a comunica orice modificare a acestora.
+          Declaratiile false se pedepsesc conform legii penale.<br />
+          I, the undersigned, state on my own responsibility, under penalty of criminal law regarding false statements, that I am the real sender of the
+          operation/that the real sender is / Subsemnatul, declar pe propria raspundere, sub actiunea legii penale privind falsul in declaratii, ca sunt
+          ordonatorul real al operaţunii/ca ordonatorul real este:
+          <br />
+          Funds source: wages, indemnities or other earnings obtained by the residents working abroad; other sources: / Sursa fondurilor: salarii,
+          indemnizatii, si alte beneficii obţinute de rezidentii care lucreaza in strainatate; alte surse:<br />
+          MoneyGram shows its right to refuse to perfom the transactions ordered by the customer or to cease the relations with the customer in case of
+          some atranzactiei ordonate de client sau de a înceta relaţiile cu clientul in cazul unor declaratii false sau dacare suspiciuni cu privire la realitatea
+          celor declarate de client.
 
-              <div class="row">
-                <div class="col-lg-12" style="text-align: center;">
-                  <a style="width: 133px; height: 20px; font-family: Inter; font-size: 16px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: 0.4px; text-align: center; color: #0073ff;">
-                    Deschide Sibcor
-                  </a>
-                </div>
-              </div>
+        </label>
+      </td>
+    </tr>
 
-              <br /><br />
+  </table>
+  <table width="950px" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <label ID="Label65" class="fn_9">Sender’s signature / Semnătura expeditorului</label>
+      </td>
+      <td align="right">
+        <label ID="Label66" class="fn_9">Date / Data </label>
+      </td>
+      <td>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label ID="lbl_send_back_date" class="fn_9" Font-Bold="true"> ddddd</label>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <label ID="Label64" class="fn_5"><b><font>Termeni şi condiţii de trimitere<br />
+          prin MoneyGram</font></b><br />
+          Acesta este un extras din termenii şi condiţiile
+          MoneyGram Documentul integral cu termeni şi
+          condiţii este disponibil la locaţia agentului local
+          şi dvs. trebuie să vă asiguraţi că l-aţi citit şi înţeles
+          înainte de a încheia un acord cu noi. De exemplu,
+          pentru transferurile către o ţară de destinaţie
+          din afara UE, Norvegia, Islanda şi Liechtenstein
+          (“EEA”) se aplică alţi termeni.Acesta este un extras din termenii şi condiţiile
+          MoneyGram Documentul integral cu termeni şi
+          condiţii este disponibil la locaţia agentului local
+          şi dvs. trebuie să vă asiguraţi că l-aţi citit şi înţeles
+          înainte de a încheia un acord cu noi. De exemplu,
+          pentru transferurile către o ţară de destinaţie
+          din afara UE, Norvegia, Islanda şi Liechtenstein
+          (“EEA”) se aplică alţi termeni.<br />
+          <b><font>1. INTRODUCERE</font></b><br />
+          1.1 Acest acord este încheiat între dvs. şi Money-
+          Gram International Limited (“noi”), prin intermediul
+          unuia dintre agenţii locali MoneyGram
+          (“Service Rep”) cu rol de agent. Termenii din
+          formular fac parte din acest acord.1.1 Acest acord este încheiat între dvs. şi Money-
+          Gram International Limited (“noi”), prin intermediul
+          unuia dintre agenţii locali MoneyGram
+          (“Service Rep”) cu rol de agent. Termenii din
+          formular fac parte din acest acord.<br />
+          1.2 Trebuie să semnaţi formularul şi să vă asiguraţi
+          că toate secţiunile au fost completate corect şi în
+          totalitate. În caz contrar, este posibil să nu putem
+          trimite banii. Trebuie să ne contactaţi în cazul în care
+          una dintre informaţiile furnizate se modifică înainte
+          ca destinatarul să colecteze sau să primească banii.<br />
+          1.3 Acest acord este încheiat pentru furnizarea
+          serviciului nostru de transfer de bani Money-
+          Gram®, care vă permite să trimiteţi bani unei
+          persoane specificate în formular (“destinatarul”)
+          (a) pe care îi va colecta în numerar de la o
+          locaţie MoneyGram (serviciul nostru “numerarnumerar”);
+          sau (b) pe care îi va primi în contul
+          său bancar (serviciul nostru “numerar-cont”).
+          Aceste condiţii se aplică pentru ambele servicii,
+          cu excepţia cazurilor în care este specificat că se
+          aplică numai pentru unul dintre acestea.1.3 Acest acord este încheiat pentru furnizarea
+          serviciului nostru de transfer de bani Money-
+          Gram®, care vă permite să trimiteţi bani unei
+          persoane specificate în formular (“destinatarul”)
+          (a) pe care îi va colecta în numerar de la o
+          locaţie MoneyGram (serviciul nostru “numerarnumerar”);
+          sau (b) pe care îi va primi în contul
+          său bancar (serviciul nostru “numerar-cont”).
+          Aceste condiţii se aplică pentru ambele servicii,
+          cu excepţia cazurilor în care este specificat că se
+          aplică numai pentru unul dintre acestea.<br />
+          1.4 Pentru transferurile numerar-numerar, puteţi
+          trimite bani în aceeaşi ţară sau într-o altă ”ţară de
+          destinaţie”. Destinatarul poate colecta banii numai
+          din ţara de destinaţie specificată în formular.
+          După ce agentul local a procesat formularul şi a
+          primit banii de la dvs., destinatarul poate colecta
+          banii în numerar de la orice locaţie MoneyGram
+          din ţara de destinaţie în interval de câteva minute
+          (în timpul orelor de funcţionare).1.4 Pentru transferurile numerar-numerar, puteţi
+          trimite bani în aceeaşi ţară sau într-o altă ”ţară de
+          destinaţie”. Destinatarul poate colecta banii numai
+          din ţara de destinaţie specificată în formular.
+          După ce agentul local a procesat formularul şi a
+          primit banii de la dvs., destinatarul poate colecta
+          banii în numerar de la orice locaţie MoneyGram
+          din ţara de destinaţie în interval de câteva minute
+          (în timpul orelor de funcţionare).<br />
+          2 Detaliile noastre de contact: numărul nostru
+          de telefon este 0808034288 - 888 666 3947
+          (s-ar putea să fiţi taxat pentru apelurile către acest
+          număr efectuate de pe un telefon mobil); site-ul
+          nostru Web este www.moneygram.com; adresa
+          la care ne puteţi scrie este MoneyGram International
+          Ltd., 1 Bevington Path, 49-51 Tanner Street,
+          London ENGLAND SE1 3PW; şi adresa noastră de
+          e-mail este customerservice@moneygram.com.2 Detaliile noastre de contact: numărul nostru
+          de telefon este 0808034288 - 888 666 3947
+          (s-ar putea să fiţi taxat pentru apelurile către acest
+          număr efectuate de pe un telefon mobil); site-ul
+          nostru Web este www.moneygram.com; adresa
+          la care ne puteţi scrie este MoneyGram International
+          Ltd., 1 Bevington Path, 49-51 Tanner Street,
+          London ENGLAND SE1 3PW; şi adresa noastră de
+          e-mail este customerservice@moneygram.com.<br />
+          <b><font>2. TAXE ŞI SCHIMB VALUTAR</font></b><br />
+          2.1 Trebuie să ne achitaţi taxa specificată în formular.
+          Nu veţi fi taxat cu nicio altă taxă de transfer.
+          Dacă moneda de plată diferă de moneda în care
+          ne-aţi furnizat banii, va fi aplicat un curs de schimb
+          valutar. Moneda aleasă de dvs., cursul de schimb stabilit
+          şi suma convertită vor fi specificate în formular.2.1 Trebuie să ne achitaţi taxa specificată în formular.
+          Nu veţi fi taxat cu nicio altă taxă de transfer.
+          Dacă moneda de plată diferă de moneda în care
+          ne-aţi furnizat banii, va fi aplicat un curs de schimb
+          valutar. Moneda aleasă de dvs., cursul de schimb stabilit
+          şi suma convertită vor fi specificate în formular.<br />
+          <b><font>3. ANULAREA ŞI RAMBURSAREA UNUI<br />
+            TRANSFER</font></b><br />
+          3.1 Nu aveţi dreptul să anulaţi un transfer. Este
+          posibil totuşi să anulăm un transfer înainte ca destinatarul
+          să colecteze sau să primească banii. Dacă
+          doriţi să anulaţi un transfer şi să solicitaţi rambursarea
+          sumei transferate, puteţi solicita acest lucru
+          agentului local sau ne puteţi scrie anexând o copie
+          a formularului completat.3.1 Nu aveţi dreptul să anulaţi un transfer. Este
+          posibil totuşi să anulăm un transfer înainte ca destinatarul
+          să colecteze sau să primească banii. Dacă
+          doriţi să anulaţi un transfer şi să solicitaţi rambursarea
+          sumei transferate, puteţi solicita acest lucru
+          agentului local sau ne puteţi scrie anexând o copie
+          a formularului completat. 3.2 Pentru transferurile numerar-numerar,
+          dacă transferul nu a fost efectuat în mod
+          corespunzător sau nu a ajuns la destinaţie, vă vom
+          rambursa imediat banii şi taxa percepută de noi,
+          dacă este cazul după verificarea circumstanţelor
+          privind executarea transferului.<br /></label>
+      </td>
 
-              <div class="row">
-                <div class="col-lg-4">
-
-                </div>
-                <div class="col-lg-4">
-                  <table class="table table-hover" style="width: 100%; background-color: white; border-radius: 8px;">
-                    <tr>
-                      <td style="text-align: left;">
-                        Nume destinatar:
-                      </td>
-                      <td style="text-align: left;">
-                        Covaci Simona Adriana
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: left;">
-                        Tara primire:
-                      </td>
-                      <td style="text-align: left;">
-                        {{feeLookup.receiveCountry}}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: left;">
-                        Tip moneda:
-                      </td>
-                      <td style="text-align: left;">
-                        {{selectedFeeInfo.sendAmounts.sendCurrency}} - {{selectedFeeInfo.receiveAmounts.payoutCurrency}}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: left;">
-                        Tip comisionare:
-                      </td>
-                      <td style="text-align: left;">
-                        Excluzand taxele
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: left;">
-                        Comision:
-                      </td>
-                      <td style="text-align: left;">
-                        {{selectedFeeInfo.sendAmounts.totalSendFees | number: '.2'}}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: left;">
-                        Serviciu:
-                      </td>
-                      <td style="text-align: left;">
-                        {{selectedFeeInfo.deliveryOptDisplayName}}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: left;">
-                        Agent:
-                      </td>
-                      <td style="text-align: left;">
-                        {{selectedFeeInfo.receiveAgentName}}
-                      </td>
-                    </tr>
-                  </table>
-
-                  <br />
-
-                  <button type="submit" class="ButonPasulUrmator">Tipareste documentul</button>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="col-lg-3" style="box-shadow: -1px 0 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
-
-      <div style="background-color: white; height: 1050px; padding: 20px 20px 20px 20px;">
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-12">
-            <label>Covaci Simona Adriana</label> <br />
-            <label>CIC: </label> <label>7676705</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" style="box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
-            &nbsp;
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-12">
-            <label style="font-weight: 600">Detalii client</label>
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            CNP/CUI:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            2910405203405
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Numar telefon:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            0727727727
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Titlu:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Doamna
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Data nasterii:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            07 - 12 -1989
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Localitate:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Bucuresti
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Tara:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Romania
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Cetatenie:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Romana
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Status rezident:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Rezident
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Profesie:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Economist
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Job:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Economist
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-12" style="box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
-            &nbsp;
-          </div>
-        </div>
-
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-12">
-            <label style="font-weight: 600">Detalii act identitate</label>
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Tip act:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Buletin
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Serie si numar:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            XY 970441
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Data Emiterii:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            20 - 08 -2014
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Data expirarii:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            20 - 08 -2024
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Emis de autoritatea:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            SPCLEP Bucuresti
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Tara:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Romania
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Adresa:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Str. Iosif Niculescu, Nr. 5, Ap. 44
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Oras:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Bucuresti
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Judet:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            Brasov
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-6">
-            Cod postal:
-          </div>
-          <div class="col-lg-6" style="text-align: right; font-weight: 600;">
-            505200
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" style="box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08); background-color: #ffffff;">
-            &nbsp;
-          </div>
-        </div>
-        <div class="row" style="padding: 5px 5px 5px 5px;">
-          <div class="col-lg-12">
-            <label style="color: #7f7f7f;">Pentru a face orice tip de modificare, va rugam sa folositi Sibcor v2.</label>
-          </div>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-
-      </div>
-
-  </div>
+      <td  valign="top">
+        <label ID="Label73" class="fn_5">d
+          3.3 Totuşi, nu vom fi responsabili în cazul în care
+          nu aţi îndeplinit obligaţiile stipulate la condiţia 4.3
+          şi banii au fost achitaţi unei persoane care a furnizat
+          agentului local un act care poate fi considerat
+          în mod rezonabil ca fiind un document de identificare
+          valid pentru destinatar („Identificare”).d
+          3.3 Totuşi, nu vom fi responsabili în cazul în care
+          nu aţi îndeplinit obligaţiile stipulate la condiţia 4.3
+          şi banii au fost achitaţi unei persoane care a furnizat
+          agentului local un act care poate fi considerat
+          în mod rezonabil ca fiind un document de identificare
+          valid pentru destinatar („Identificare”).<br />
+          <b><font>4. IDENTIFICAREA ŞI PLATA PENTRU</font></b><br />
+          TRANSFERURILE NUMERAR-NUMERAR<br />
+          4.1 Pentru colectarea banilor şi finalizarea transferului
+          trebuie furnizat un document de identificare.
+          Pentru anumite transferuri (în funcţie de ţara
+          de destinaţie şi de sumă – pentru detalii întrebaţi
+          agentul local) este posibil să fie necesar răspunsul
+          la întrebarea test specificată de dvs. în formular,
+          în plus faţă de documentul de identificare sau în
+          locul acestuia.4.1 Pentru colectarea banilor şi finalizarea transferului
+          trebuie furnizat un document de identificare.
+          Pentru anumite transferuri (în funcţie de ţara
+          de destinaţie şi de sumă – pentru detalii întrebaţi
+          agentul local) este posibil să fie necesar răspunsul
+          la întrebarea test specificată de dvs. în formular,
+          în plus faţă de documentul de identificare sau în
+          locul acestuia.<br />
+          4.2 Numărul de referinţă al transferului va trebui
+          de asemenea furnizat în mod normal agentului local.
+          Reţineţi că numărul de referinţă nu este întotdeauna
+          necesar pentru colectarea banilor (puteţi
+          afla elementele obligatorii de la agentul local).4.2 Numărul de referinţă al transferului va trebui
+          de asemenea furnizat în mod normal agentului local.
+          Reţineţi că numărul de referinţă nu este întotdeauna
+          necesar pentru colectarea banilor (puteţi
+          afla elementele obligatorii de la agentul local).<br />
+          4.3 Nu trebuie să dezvăluiţi numărul de referinţă,
+          răspunsul la întrebarea test sau detaliile destinatarului
+          unei alte persoane în afara destinatarului
+          ales şi veţi lua toate măsurile rezonabile pentru
+          a vă asigura că acestea nu vor fi obţinute de
+          terţi - de exemplu, având grijă (a) să nu permiteţi
+          niciunei persoane să vadă formularul, şi (b) să nu
+          scrieţi răspunsul la întrebarea test sau numărul
+          de referinţă într-un mod care poate fi recunoscut,
+          şi să nu permiteţi nimănui să vă audă când le
+          comunicaţi destinatarului.4.3 Nu trebuie să dezvăluiţi numărul de referinţă,
+          răspunsul la întrebarea test sau detaliile destinatarului
+          unei alte persoane în afara destinatarului
+          ales şi veţi lua toate măsurile rezonabile pentru
+          a vă asigura că acestea nu vor fi obţinute de
+          terţi - de exemplu, având grijă (a) să nu permiteţi
+          niciunei persoane să vadă formularul, şi (b) să nu
+          scrieţi răspunsul la întrebarea test sau numărul
+          de referinţă într-un mod care poate fi recunoscut,
+          şi să nu permiteţi nimănui să vă audă când le
+          comunicaţi destinatarului.<br />
+          <b><font>5. CONDIŢII SUPLIMENTARE PENTRU<br />
+            TRANSFERURILE NUMERAR-CONT</font></b><br />
+          5.1 Vom trimite banii către contul bancar specificat
+          în formular. În cazul în care contul se află
+          într-o ţară EEA, banca în care este deschis acesta
+          va primi banii în termen de patru zile lucrătoare
+          (luni-vineri, excluzând sărbătorile legale) din
+          momentul în care aţi solicitat trimiterea acestora.
+          Banca este obligată prin lege să plaseze banii
+          în contul destinatarului în momentul în care îi
+          primeşte. Este posibil ca banca destinatarului să
+          aplice propriile taxe la transfer, pentru care noi nu
+          suntem responsabili.5.1 Vom trimite banii către contul bancar specificat
+          în formular. În cazul în care contul se află
+          într-o ţară EEA, banca în care este deschis acesta
+          va primi banii în termen de patru zile lucrătoare
+          (luni-vineri, excluzând sărbătorile legale) din
+          momentul în care aţi solicitat trimiterea acestora.
+          Banca este obligată prin lege să plaseze banii
+          în contul destinatarului în momentul în care îi
+          primeşte. Este posibil ca banca destinatarului să
+          aplice propriile taxe la transfer, pentru care noi nu
+          suntem responsabili.<br />
+          5.2 Dacă ne solicitaţi să trimitem bani într-un cont
+          bancar şi transferul nu este realizat corespunzător
+          sau nu ajunge de loc, vă vom rambursa imediat
+          banii şi taxa percepută de noi - cu excepţia cazului
+          în care putem demonstra că banca a primit banii
+          sau că a existat o greşeală în detaliile furnizat de
+          dvs. despre contul bancar al destinatarului.5.2 Dacă ne solicitaţi să trimitem bani într-un cont
+          bancar şi transferul nu este realizat corespunzător
+          sau nu ajunge de loc, vă vom rambursa imediat
+          banii şi taxa percepută de noi - cu excepţia cazului
+          în care putem demonstra că banca a primit banii
+          sau că a existat o greşeală în detaliile furnizat de
+          dvs. despre contul bancar al destinatarului.<br />
+          <b><font>6. RESPONSABILITATEA NOASTRĂ</font></b><br />
+          6.1 Trebuie să ne contactaţi telefonic sau în scris
+          cât mai repede posibil în cazul în care credeţi că un
+          transfer nu a fost efectuat corespunzător sau de
+          loc. Nu vă vom rambursa banii în baza condiţiilor
+          3.2 sau 5.2 dacă aţi amânat fără motive întemeiate
+          să ne informaţi cu privire la problemă sau, în
+          orice caz, dacă ne-aţi informat la mai mult de 13
+          luni după ce aţi trimis banii.6.1 Trebuie să ne contactaţi telefonic sau în scris
+          cât mai repede posibil în cazul în care credeţi că un
+          transfer nu a fost efectuat corespunzător sau de
+          loc. Nu vă vom rambursa banii în baza condiţiilor
+          3.2 sau 5.2 dacă aţi amânat fără motive întemeiate
+          să ne informaţi cu privire la problemă sau, în
+          orice caz, dacă ne-aţi informat la mai mult de 13
+          luni după ce aţi trimis banii.<br />
+          6.2 Nu suntem responsabili faţă de dvs. cu o sumă
+          mai mare decât cea trimisă plus taxa de transfer
+          percepută de noi. Nu vom fi responsabili pentru niciun
+          fel de pierderi sau costuri accidentale, indirecte,
+          speciale sau rezultate suferite de dvs. sau, dacă
+          acest acord este încheiat cu dvs. în rol de consumator,
+          niciun fel de pierderi sau costuri ale companiei
+          (precum pierderile de profituri sau oportunităţi).<br />
+          6.3 Dacă ne solicitaţi să achităm o sumă de
+          bani unei persoane despre care se demonstrează
+          ulterior că v-a fraudat sau care nu îşi îndeplineşte
+          obligaţiile faţă de dvs., nu vom fi consideraţi
+          responsabili pentru aceasta.<br />
+        </label>
+      </td>
+      <td  valign="top">
+        <label ID="Label71" class="fn_7">
+          <b><font>7. LEGILE ŞI LIMIBILE APLICABILE</font></b><br />
+          7.1 Legislaţia engleză se aplică pentru acest acord
+          (şi pentru tranzacţiile noastre cu dvs. în vederea
+          încheierii acestui acord) şi vom comunica cu dvs.
+          în limba română. Dacă există vreo diferenţă între
+          versiunea în engleză şi cea în română a acestor
+          condiţii, se va aplica versiunea în limba engleză.<br />
+          <b><font>8. PROTECŢIA DATELOR</font></b><br />
+          8.1 Suntem dedicaţi protejării confidenţialităţii
+          dvs. S-ar putea să utilizăm informaţiile personale
+          ale dvs. şi destinatarului şi detaliile despre transfer
+          şi să le salvăm în baza noastră de date pentru
+          a putea să vă furnizăm dvs. şi destinatarului
+          servicii de transfer, pentru gestionarea afacerilor
+          companiei noastre (inclusiv administrarea relaţiei
+          noastre pe termen lung cu dvs.) şi pentru cercetări
+          de piaţă, în limitele permise de legea în vigoare.<br />
+          8.2 Este posibil să partajăm, în aceste scopuri,
+          informaţiile cu compania noastră mamă sau cu
+          alte companii, alţi reprezentanţi locali şi furnizori
+          de servicii MoneyGram aflaţi în afara EEA. În cazul
+          în care aceştia se află pe teritoriul SUA, vom respecta
+          principiile de protecţie a datelor “Safe Harbour”
+          ale SUA – UE. Nu vom partaja informaţiile
+          cu niciun terţ decât în măsura în care acest lucru
+          este impus prin lege. Avem instalate practici şi
+          proceduri de securitate pentru restricţionarea accesului
+          la informaţiile personale, în funcţie de caz.<br />
+          8.3 Puteţi solicita să accesaţi informaţiile dvs.
+          personale, solicita ca informaţiile să fie corectate
+          sau actualizate sau, din motive legitime, vă puteţi
+          opune procesării acestora, contactându-ne în scris
+          sau prin e-mail (Attn: Privacy Officer) sau telefonic.<br />
+          8.4 Completând şi semnând formularul,
+          sunteţi de acord ca noi să colectăm, utilizăm
+          şi transferăm informaţiile personale ale dvs. şi
+          destinatarului în scopurile de mai sus, inclusiv
+          transferuri către SUA şi către ţara de destinaţie.
+          Site-ul nostru Web conţine cea mai nouă politică
+          de protecţie a datelor şi vă vom informa, în
+          conformitate cu prevederile legii, cu privire la
+          modificările aduse acestei politici.<br />
+          8.5 Completand si semnand formularul, sunteti de acord
+          ca noi sa: prelucram datele dvs. cu caracter personal,
+          prin transmitere catre Banca Comerciala Romana, in
+          scopul participarii si desemnarii castigatorilor in cadrul
+          campaniilor de promovare derulate de catre Banca
+          Comerciala Romana, realizarii de rapoarte statistice cu
+          privire la clienţii, produsele şi serviciile BCR, informarii
+          cu privire la alte acţiuni/campanii desfăşurate în
+          viitor; sa participati la campaniile promotionale sau
+          de marketing organizate de MoneyGram sau Banca
+          Comerciala Romana, inclusiv campaniile cu tragere
+          la sorti; Banca Comerciala Romana sa va transmita
+          informatii despre campanii, activitati/actiuni viitoare de
+          marketing.<br /> <br />
+          In cazul in care NU sunteti de acord cu prelucrarea
+          datelor dvs. cu caracter personal in scopurile
+          mentionate la punctul 8.5 de mai sus bifati casuta
+          urmatoare  <br/><br />
+          <b><font>9. PLÂNGERI</font></b><br />
+          9.1 Î n cazul în care aveţi plângeri, vă rugăm să
+          ni le aduceţi la cunoştinţă şi puteţi de asemenea
+          să vă adresaţi unei organizaţii independente de
+          soluţionare a plângerilor. Pentru detalii complete
+          sau pentru ne a trimite o plângere, puteţi vizita
+          site-ul nostru web, ne puteţi trimite un e-mail sau
+          puteţi scrie departamentului nostru de relaţii cu
+          clienţii la adresa specificată la condiţia 2.<br />
+          <b><font>10. REGLEMENTARE</font></b><br />
+          Suntem o instituţie care se ocupă cu efectuarea
+          de plăţi autorizată şi reglementată de Autoritatea
+          pentru servicii financiare (Financial Services Authority
+          - “FSA”) din Marea Britanie. Registrul FSA
+          este disponibil la www.fsa.gov.uk/register.
+          <b>RO NR Send 10.09</b></label>
+      </td>
+    </tr>
+  </table>
 
 </div>

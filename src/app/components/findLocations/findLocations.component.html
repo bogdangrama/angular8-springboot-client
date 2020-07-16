@@ -2,7 +2,9 @@
   <div class="TopRectangleText SecondStyle">
     <div class="row">
       <div class="col-lg-6 text-left">
-        Status tranzactii
+        MoneyGram
+        <img src="../assets/images/grayArrow.png" alt="image" class="Arrow">
+        Cauta locatie
       </div>
       <div class="col-lg-6 text-right">
 
@@ -28,23 +30,38 @@
       <div class="row" style="padding: 20px 20px 20px 20px;">
         <div class="col-lg-2">
           <div class="form-group">
-            <input type="text" class="form-control" id="perioada" placeholder="Perioada" required name="perioada">
+            <ngx-select-dropdown id="receiveCountry" name="receiveCountry"
+                                 [config]="{displayKey: 'CountryName', search: true, placeholder: 'Selecteaza tara'}"
+                                 [(ngModel)]="selectedCountryInfo"
+                                 [options]="countryInfoList"
+                                 [multiple]="false">
+            </ngx-select-dropdown>
           </div>
         </div>
         <div class="col-lg-2">
           <div class="form-group">
-            <input type="text" class="form-control" id="sucursala" placeholder="Sucursala" required name="sucursala">
+            <ngx-select-dropdown id="prefixOras" name="receiveCountry" (change)="updateCityListChange()"
+                                 [config]="{search: true, placeholder: 'Prefixul orasului'}"
+                                 [(ngModel)]="selectedCityPrefix"
+                                 [options]="prefixCityList"
+                                 [multiple]="false">
+            </ngx-select-dropdown>
           </div>
         </div>
         <div class="col-lg-2">
           <div class="form-group">
-            <input type="number" class="form-control" id="valoaretranzactie" placeholder="Valoarea tranzactiei" required name="valoaretranzactie">
+            <ngx-select-dropdown id="receiveCity" name="receiveCity"
+                                 [config]="{search: true, placeholder: 'Selecteaza orasul'}"
+                                 [(ngModel)]="selectedCity"
+                                 [options]="cityList"
+                                 [multiple]="false">
+            </ngx-select-dropdown>
           </div>
         </div>
-        <div class="col-lg-4">
-          <button type="submit" class="ButonTranzactii">Cautare</button>
-          &nbsp;
-          <button type="submit" class="ButonTranzactii">Descarca raport</button>
+        <div class="col-lg-2">
+          <div class="form-group">
+            <button type="submit" class="ButonTranzactii" (click)="CautaLocatii()">Cauta</button>
+          </div>
         </div>
       </div>
 
@@ -116,36 +133,18 @@
         </div>
         <div class="table-row" *ngFor="let line of reportView.reportContent; let i = index" style="background-color: white;"
              [ngClass]="determineFirstRow(i)">
-          <div class="table-column" [ngStyle]="determineColumnWidth()"
-               *ngFor="let column of line">
-              <img *ngIf="column.fieldValue == 'Send'" src="../../../assets/images/sendGreenDot.png" width="10px" />
-              <img *ngIf="column.fieldValue == 'Receive'" src="../../../assets/images/receiveBlueDot.png" width="10px" />
-              {{column.fieldValue ? column.fieldValue : emptyCol}}
+          <div class="table-column" [ngStyle]="determineColumnWidth()" *ngFor="let column of line">
+              <div *ngIf="column.fieldValue == 'YY'">
+                <img src="../../../assets/images/OkBullet.png" width="20px" /> /
+                <img src="../../../assets/images/OkBullet.png" width="20px" />
+              </div>
+              <div *ngIf="column.fieldValue != 'YY' && column.fieldValue != 'Program'">
+                {{column.fieldValue ? column.fieldValue : emptyCol}}
+              </div>
+              <div *ngIf="column.fieldValue == 'Program'">
+                <img src="../../../assets/images/TransactionDetailsButton.png">
+              </div>
           </div>
-        </div>
-      </div>
-      <div class="table-footer">
-        <div class="paging" *ngIf="reportView.reportContent.length > 1">
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 1"
-                  (click)="previousPages(1)">{{ 'reporting.previous_page' }}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 3"
-                  (click)="previousPages(3)">{{currentPage - 3}}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 2"
-                  (click)="previousPages(2)">{{currentPage - 2}}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage > 1"
-                  (click)="previousPages(1)">{{currentPage - 1}}</button>
-          <button type="button" class="btn btn-primary">{{currentPage}}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage < totalResults/batchSize"
-                  (click)="nextPages(1)">{{currentPage + 1}}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage < (totalResults - batchSize)/batchSize"
-                  (click)="nextPages(2)">{{currentPage + 2}}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage < (totalResults - batchSize*2)/batchSize"
-                  (click)="nextPages(3)">{{currentPage + 3}}</button>
-          <button type="button" class="btn btn-secondary" *ngIf="currentPage < totalResults/batchSize"
-                  (click)="nextPages(1)">{{ 'reporting.next_page' }}</button>
-        </div>
-        <div class="total-results">
-          {{totalResultsFooterText}}
         </div>
       </div>
     </div>

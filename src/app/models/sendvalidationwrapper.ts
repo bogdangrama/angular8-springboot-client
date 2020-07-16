@@ -1,8 +1,8 @@
-export class MoneyGramError {
-  errorCode: string;
-  errorString: string;
-  subErrorCode: string;
-  offendingField: string;
-  timeStamp: string;
-  detailString: string;
+import {ProductFieldInfo} from './productfieldinfo';
+import {MoneyGramError} from './moneygramerror';
+
+export class SendValidationWrapper {
+  //productFieldInfoExtensionlist: ProductFieldInfo[];
+  public errors: MoneyGramError[];
+  public result: string;
 }

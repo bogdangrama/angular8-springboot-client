@@ -5,28 +5,28 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SucursaleService {
-  private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/sucursale';
+export class UsersService {
+  private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/users';
 
   constructor(private http: HttpClient) { }
 
-  getSucursala(id: number): Observable<any> {
+  getUser(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createSucursala(sucursala: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, sucursala);
+  createUser(user: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, user);
   }
 
-  updateSucurala(id: number, value: any): Observable<Object> {
+  updateUser(id: string, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deleteSucursala(id: number): Observable<any> {
+  deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  getSucursalaList(): Observable<any> {
+  getUserList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
 }

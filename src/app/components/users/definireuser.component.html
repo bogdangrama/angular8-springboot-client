@@ -1,49 +1,49 @@
-<h3>Definire Sucursala</h3>
+<h3>Definire Utilizator</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="cod">Cod</label>
-      <input type="text" class="form-control" id="cod" required [(ngModel)]="sucursala.cod" name="cod">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username">
     </div>
 
     <div class="form-group">
-      <label for="denumire">Denumire</label>
-      <input type="text" class="form-control" id="denumire" required [(ngModel)]="sucursala.denumire" name="denumire">
+      <label for="numePrenume">Nume Prenume</label>
+      <input type="text" class="form-control" id="numePrenume" required [(ngModel)]="user.numePrenume" name="numePrenume">
     </div>
 
     <div class="form-group">
-      <label for="adresa">Adresa</label>
-      <input type="text" class="form-control" id="adresa" required [(ngModel)]="sucursala.adresa" name="adresa">
+      <label for="sucursala">Sucursala</label>
+      <select class="form-control" id="sucursala" [(ngModel)]="user.idSucursala" name="sucursala">
+        <option value="">-- Selectati</option>
+        <option *ngFor="let sucurala of sucursale"
+                [value]="sucurala.id">
+          {{sucurala.denumire}}
+        </option>
+      </select>
     </div>
 
     <div class="form-group">
-      <label for="adresa">Oras</label>
-      <input type="text" class="form-control" id="oras" required [(ngModel)]="sucursala.oras" name="oras">
+      <label for="isAdmin">Is Admin</label>
+      <select class="form-control" id="isAdmin" required [(ngModel)]="user.isAdmin" name="isAdmin">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
     </div>
 
     <div class="form-group">
-      <label for="Judet">Judet</label>
-      <input type="text" class="form-control" id="judet" required [(ngModel)]="sucursala.judet" name="judet">
-    </div>
-
-    <div class="form-group">
-      <label for="codAgentMoneygram">Cod agent moneygram</label>
-      <input type="text" class="form-control" id="codAgentMoneygram" required [(ngModel)]="sucursala.codAgentMoneyGram" name="codAgentMoneygram">
-    </div>
-
-    <div class="form-group">
-      <label for="parolaAgentMoneygram">Parola agent moneygram</label>
-      <input type="text" class="form-control" id="parolaAgentMoneygram" required [(ngModel)]="sucursala.parolaAgentMoneyGram" name="parolaAgentMoneygram">
-    </div>
-
-    <div class="form-group">
-      <label for="posAgentMoneygram">POS agent moneygram</label>
-      <input type="text" class="form-control" id="posAgentMoneygram" required [(ngModel)]="sucursala.posAgentMoneyGram" name="posAgentMoneygram">
+      <label for="canPerformMgTransactions">Can Perform MoneyGram Transaction</label>
+      <select class="form-control" id="canPerformMgTransactions" required [(ngModel)]="user.canPerformMgTransactions" name="canPerformMgTransactions">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select>
     </div>
 
     <div class="form-group">
       <label for="status">Status</label>
-      <input type="text" class="form-control" id="status" required [(ngModel)]="sucursala.status" name="status">
+      <select class="form-control" id="status" required [(ngModel)]="user.status" name="status">
+        <option value="Y">Activ</option>
+        <option value="N">Inactiv</option>
+      </select>
     </div>
 
     <button type="submit" class="btn btn-success">Save</button>

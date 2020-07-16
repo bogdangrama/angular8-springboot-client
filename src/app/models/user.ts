@@ -1,14 +1,10 @@
-export class Sucursala {
-    id: number;
-    cod: string;
-    denumire: string;
-    adresa: string;
-    oras: string;
-    judet: string;
-    codAgentMoneyGram: string;
-    parolaAgentMoneyGram: string;
-    posAgentMoneyGram: string;
-    status: string;
-    usernameEdit: string;
-    dataEdit: string;
+export class User {
+  username: string;
+  numePrenume: string;
+  idSucursala: string;
+  isAdmin: string;
+  canPerformMgTransactions: string;
+  status: string;
+  usernameEdit: string;
+  dataEdit: string;
 }

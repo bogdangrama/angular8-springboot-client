@@ -8,7 +8,7 @@ import * as moment from 'moment';
   templateUrl: './ufe-date-range-picker.component.html',
   styleUrls: ['./ufe-date-range-picker.component.scss']
 })
-export class UfeDateRangePickerComponent implements OnInit{
+export class UfeDateRangePickerComponent implements OnInit {
 
   @Input() from: moment.Moment;
   @Input() to: moment.Moment;

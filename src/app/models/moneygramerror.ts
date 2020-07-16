@@ -1,10 +1,8 @@
-export class User {
-  username: string;
-  numePrenume: string;
-  idSucursala: string;
-  isAdmin: string;
-  canPerformMgTransactions: string;
-  status: string;
-  usernameEdit: string;
-  dataEdit: string;
+export class MoneyGramError {
+  errorCode: string;
+  errorString: string;
+  subErrorCode: string;
+  offendingField: string;
+  timeStamp: string;
+  detailString: string;
 }

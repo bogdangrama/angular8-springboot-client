@@ -1,23 +1,22 @@
 import {ReportModel} from './ReportModel';
 
-export class TransactionReportModel extends ReportModel {
+export class AgentInfoModel extends ReportModel {
 
-  public mgid = 'MG ID';
-  public nrreferinta = 'Nr referinta';
-  public tip = 'Tip';
-  public stare = 'Stare';
-  public nume = 'Nume';
-  public prenume = 'Prenume';
-  public cnp = 'CNP';
+  public agentName = 'Agent';
+  public address = 'Adresa';
+  public city = 'Oras';
+  public state = 'Stat';
+  public sendReceiveCapability = 'SEND / RECEIVE';
+  public agentPhone = 'Telefon';
+  public storeHours = 'Program';
 
   isDefaultHeader(fieldName: string){
-    if (fieldName == this.getFieldName(this.mgid) ||
-        fieldName == this.getFieldName(this.nrreferinta) ||
-        fieldName == this.getFieldName(this.tip) ||
-        fieldName == this.getFieldName(this.stare) ||
-        fieldName == this.getFieldName(this.nume) ||
-        fieldName == this.getFieldName(this.prenume) ||
-        fieldName == this.getFieldName(this.cnp))
+    if (fieldName == this.getFieldName(this.agentName) ||
+      fieldName == this.getFieldName(this.address) ||
+      fieldName == this.getFieldName(this.city) ||
+      fieldName == this.getFieldName(this.sendReceiveCapability) ||
+      fieldName == this.getFieldName(this.agentPhone) ||
+      fieldName == this.getFieldName(this.storeHours) )
       return true;
     else
       return false;
